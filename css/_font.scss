@@ -3,18 +3,18 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
-  color: $colorBlack;
-  line-height: 125%;
+  color: $colorDarkGray;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $ffHeader;
-  margin: 0 0 0.25em 0;
+  margin: 0;
 }
 
 p, a {
   font-family: $ffBody;
   margin: 0;
+  line-height: 125%;
 }
 
 p + p {

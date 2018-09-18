@@ -14,17 +14,54 @@
 
 
 // CLASS LEVEL ------------------------------------------------------------------------------------
-.mainWrapper {
+section {
   align-items: center;
+  border: $spaceUnitS solid $colorDarkGray;
+  border-radius: $spaceUnitS;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - (#{$spaceUnitL} * 2));
   justify-content: center;
-  width: 100vw;
+  margin: $spaceUnitL;
+  width: calc(100vw - (#{$spaceUnitL} * 2));
+  > div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    justify-content: center;
+    padding: $spaceUnitM;
+    position: relative;
+    width: 100%;
+    &:first-child {
+      align-items: flex-start;
+      border-bottom: $spaceUnitS solid $colorDarkGray;
+      flex: 0 0 auto;
+    }
+    &:nth-child(2)::after {
+      border-bottom: $spaceUnitS dotted $colorDarkGray;
+      bottom: 0;
+      content: '';
+      display: block;
+      margin: $spaceUnitS 0;
+      position: absolute;
+      transform: translate(0, 50%);
+      width: calc(100% + #{$spaceUnitS});
+    }
+    > h6 {
+      color: $colorLightGray;
+      left: $spaceUnitM;
+      position: absolute;
+      top: $spaceUnitM;
+    }
+  }
   @include tablet {
     flex-direction: initial;
   }
   @include desktop {
     flex-direction: initial;
   }
+}
+
+form {
 }
