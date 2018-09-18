@@ -3,7 +3,7 @@ $boxShadowHover: 0 6px 6px rgba(0,0,0,0.08), 0 6px 6px rgba(0,0,0,0.16), 0 0 6px
 
 $colorBlack: #222222;
 $colorDarkGray: #333333;
-$colorLightGray: #cccccc;
+$colorLightGray: #666666;
 $colorGray: #777777;
 $colorWhite: #FFFFFF;
 $colorMain: #00A5D5;
@@ -20,9 +20,9 @@ $fsH4: calc(#{$fsP} * 1.83);    // ARTICLE MAIN HEADER
 $fsH5: calc(#{$fsP} * 1.35);    // ARTICLE SUB HEADER
 $fsH6: $fsP;                    // ARTICLE SECTION
 
-$spaceUnitS: 3rem;
-$spaceUnitM: 6rem;
-$spaceUnitL: 9rem;
+$spaceUnitS: 0.3rem;
+$spaceUnitM: 0.6rem;
+$spaceUnitL: 0.9rem;
 
 $transitionS: 0.3s;
 $transitionM: 0.6s;
