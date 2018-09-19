@@ -1,0 +1,189 @@
+// SECTION / README
+// Styling is based on the following structure.
+// <section>
+//   <div>...</div>  <= Card Title
+//   <div>...</div>  <= Default Styling
+//   <div>...</div>  <= Spotless UI Styling
+// </section>
+
+
+
+// SECTION / VARIABLES & MIXINS
+$sectionUnit: 1.2rem;
+$pseudoUnit: 1.6rem;
+$boxShadowDiv: 1px 2px 1px rgba(0, 0, 0, 0.20), 3px 3px 1px rgba(0, 0, 0, 0.10);
+$boxShadowPseudoBefore: inset -1px 0px 0px rgba(0, 0, 0, 0.20);
+$boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
+@mixin setColorMobile($colorVar) {
+  background-color: $colorVar;
+  & h5, h6 {
+    color: darken($colorVar, 70%);
+  }
+  & > div {
+    &:first-child {
+      background-color: darken($colorVar, 20%);
+    }
+    &:last-child {
+      border-top: 1px dashed darken($colorVar, 50%);
+    }
+    &:nth-of-type(2)::before, &:nth-of-type(2)::after {
+      background-color: $colorVar;
+    }
+  }
+}
+@mixin setColorDesktop($colorVar) {
+  &::before {
+    border-left: 1px dashed darken($colorVar, 50%);
+  }
+  & > div:first-child::before {
+    background-color: $colorVar;
+  }
+}
+
+
+
+// SECTION / GENERAL STYLING
+section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  padding: $sectionUnit;
+  width: 100vw;
+  & > div {
+    align-items: center;
+    background-color: $colorWhite;
+    box-shadow: $boxShadowDiv;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    justify-content: center;
+    padding: $sectionUnit;
+    position: relative;
+    width: 100%;
+    &:first-child {
+      border-radius: $sectionUnit $sectionUnit 0 0;
+      padding: calc(#{$sectionUnit} * 0.6) $sectionUnit;
+      align-items: flex-start;
+      border-radius: $sectionUnit $sectionUnit 0 0;
+      flex: 0 0 auto;
+    }
+    &:last-child {
+      border-radius: 0 0 $sectionUnit $sectionUnit;
+    }
+    &:nth-of-type(2)::before,
+    &:nth-of-type(2)::after {
+      border-radius: $pseudoUnit;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: $pseudoUnit;
+      position: absolute;
+      transform: translate(0, 50%);
+      width: $pseudoUnit;
+      z-index: 100;
+    }
+    &:nth-of-type(2)::before {
+      box-shadow: $boxShadowPseudoBefore;
+      left: calc(#{$pseudoUnit} * -0.5);
+    }
+    &:nth-of-type(2)::after {
+      box-shadow: $boxShadowPseudoAfter;
+      right: calc(#{$pseudoUnit} * -0.5);
+    }
+    & h6 {
+      left: $sectionUnit;
+      position: absolute;
+      top: calc(#{$sectionUnit} * 0.8);
+    }
+  }
+
+
+
+  // SECTION / COLOR STYLING
+  &:nth-of-type(4n+1) {
+    @include setColorMobile($colorC);
+  }
+  &:nth-of-type(4n+2) {
+    @include setColorMobile($colorM);
+  }
+  &:nth-of-type(4n+3) {
+    @include setColorMobile($colorY);
+  }
+  &:nth-of-type(4n+4) {
+    @include setColorMobile($colorK);
+  }
+
+
+
+  // SECTION / MEDIA QUERY
+  @include desktop {
+    $sectionUnit: 2rem;
+    $boxShadowPseudoBefore: inset 0px -1px 0px rgba(0, 0, 0, 0.20);
+    $boxShadowPseudoAfter: inset 0px 2px 0px rgba(0, 0, 0, 0.20);
+    height: initial;
+    padding: calc(#{$sectionUnit} * 2);
+    width: initial;
+    flex-direction: initial;
+    flex-wrap: wrap;
+    position: relative;
+    &::before {
+      content: '';
+      display: block;
+      height: calc(100% - (#{$sectionUnit} * 4) - #{$pseudoUnit});
+      left: 50%;
+      position: absolute;
+      top: calc(#{$sectionUnit * 2} + (#{$pseudoUnit} / 2);
+      z-index: 200;
+    }
+    &:nth-of-type(4n+1) {
+      @include setColorDesktop($colorC);
+    }
+    &:nth-of-type(4n+2) {
+      @include setColorDesktop($colorM);
+    }
+    &:nth-of-type(4n+3) {
+      @include setColorDesktop($colorY);
+    }
+    &:nth-of-type(4n+4) {
+      @include setColorDesktop($colorK);
+    }
+    & > div {
+      padding: $sectionUnit;
+      width: initial;
+      &:first-child {
+        border-radius: calc(#{$sectionUnit} * 0.4) calc(#{$sectionUnit} * 0.4) 0 0;
+        flex: 1 0 100%;
+        position: relative;
+        &::before {
+          box-shadow: $boxShadowPseudoBefore;
+          border-radius: calc(#{$sectionUnit} * 1.2);
+          content: '';
+          display: block;
+          height: $pseudoUnit;
+          left: 50%;
+          position: absolute;
+          top: 0;
+          transform: translate(-50%, -50%);
+          width: $pseudoUnit;
+          z-index: 100;
+        }
+      }
+      &:nth-of-type(n):last-child {
+        border-top: 0;
+        border-radius: 0 0 calc(#{$sectionUnit} * 0.4) 0;
+      }
+      &:nth-of-type(2) {
+        border-radius: 0 0 0 calc(#{$sectionUnit} * 0.4);
+        &::before {
+          display: none;
+        }
+        &::after {
+          border-radius: $pseudoUnit $pseudoUnit 0 0;
+          box-shadow: $boxShadowPseudoAfter;
+        }
+      }
+    }
+  }
+}
