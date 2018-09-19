@@ -16,9 +16,9 @@
 // CLASS LEVEL ------------------------------------------------------------------------------------
 $sectionUnit: 1.2rem;
 $pseudoUnit: 1.4rem;
-$boxShadowDiv: -1px 1px 0px rgba(0, 0, 0, 0.12), 2px 2px 0px rgba(0, 0, 0, 0.12);
-$boxShadowPseudoBefore: inset -1px 0px 0px rgba(0, 0, 0, 0.12);
-$boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.12);
+$boxShadowDiv: 1px 2px 1px rgba(0, 0, 0, 0.20), 3px 3px 1px rgba(0, 0, 0, 0.10);
+$boxShadowPseudoBefore: inset -1px 0px 0px rgba(0, 0, 0, 0.20);
+$boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
 section {
   // SECTION / GENERAL STYLING
   align-items: center;
@@ -104,10 +104,65 @@ section {
     @include setColor($colorK);
   }
   // SECTION / MEDIA QUERY
-  @include tablet {
-    flex-direction: initial;
-  }
   @include desktop {
+    $sectionUnit: 2rem;
+    $boxShadowPseudoAfter: inset 0px 2px 0px rgba(0, 0, 0, 0.20);
+    height: initial;
+    padding: $sectionUnit;
+    width: initial;
     flex-direction: initial;
+    flex-wrap: wrap;
+    & > div {
+      // border: 1px dashed red;
+      // align-items: center;
+      // background-color: $colorWhite;
+      // box-shadow: $boxShadowDiv;
+      // display: flex;
+      // flex-direction: column;
+      // flex: 1 0 auto;
+      // justify-content: center;
+      padding: $sectionUnit;
+      // position: relative;
+      width: initial;
+      &:first-child {
+        // padding: calc(#{$sectionUnit} * 0.6) $sectionUnit;
+        // align-items: flex-start;
+        // border-radius: calc(#{$sectionUnit} * 0.2) calc(#{$sectionUnit} * 0.2) 0 0;
+        flex: 1 0 100%;
+      }
+      &:last-child {
+        border-top: 0;
+        border-left: 1px dashed $colorLightGray;
+        // border-radius: 0 0 calc(#{$sectionUnit} * 0.2) calc(#{$sectionUnit} * 0.2);
+      }
+      &:nth-of-type(2)::before,
+      &:nth-of-type(2)::after {
+        // bottom: 0;
+        // content: '';
+        // display: block;
+        // height: $pseudoUnit;
+        // position: absolute;
+        // transform: translate(0, 50%);
+        // width: $pseudoUnit;
+        // z-index: 1000;
+      }
+      &:nth-of-type(2)::before {
+        display: none;
+        // CONTINUE HERE ADD A PSEUDO TO TOP CENTER PROB DIFF ELEMENT
+        // border-radius: 0 calc(#{$sectionUnit} * 1.2) calc(#{$sectionUnit} * 1.2) 0;
+        // box-shadow: $boxShadowPseudoBefore;
+        // left: calc(#{$pseudoUnit} * -0.5);
+      }
+      &:nth-of-type(2)::after {
+        border-radius: $pseudoUnit $pseudoUnit 0 0;
+        box-shadow: $boxShadowPseudoAfter;
+        // right: calc(#{$pseudoUnit} * -0.5);
+      }
+      & h6 {
+        // left: $sectionUnit;
+        // position: absolute;
+        // top: calc(#{$sectionUnit} * 0.8);
+      }
+    }
   }
 }

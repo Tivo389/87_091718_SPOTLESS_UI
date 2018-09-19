@@ -400,8 +400,8 @@ section {
     -ms-flex-align: center;
     align-items: center;
     background-color: #FFFFFF;
-    -webkit-box-shadow: -1px 1px 0px rgba(0, 0, 0, 0.12), 2px 2px 0px rgba(0, 0, 0, 0.12);
-    box-shadow: -1px 1px 0px rgba(0, 0, 0, 0.12), 2px 2px 0px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.2), 3px 3px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.2), 3px 3px 1px rgba(0, 0, 0, 0.1);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -428,7 +428,7 @@ section {
       -ms-flex: 0 0 auto;
       flex: 0 0 auto; }
     section > div:last-child {
-      border-top: 1px dashed #666666;
+      border-top: 1px dashed #CDCDCD;
       border-radius: 0 0 calc(1.2rem * 0.2) calc(1.2rem * 0.2); }
     section > div:nth-of-type(2)::before, section > div:nth-of-type(2)::after {
       bottom: 0;
@@ -442,13 +442,13 @@ section {
       z-index: 1000; }
     section > div:nth-of-type(2)::before {
       border-radius: 0 calc(1.2rem * 1.2) calc(1.2rem * 1.2) 0;
-      -webkit-box-shadow: inset -1px 0px 0px rgba(0, 0, 0, 0.12);
-      box-shadow: inset -1px 0px 0px rgba(0, 0, 0, 0.12);
+      -webkit-box-shadow: inset -1px 0px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: inset -1px 0px 0px rgba(0, 0, 0, 0.2);
       left: calc(1.4rem * -0.5); }
     section > div:nth-of-type(2)::after {
       border-radius: 1.4rem 0 0 1.4rem;
-      -webkit-box-shadow: inset 2px 0px 0px rgba(0, 0, 0, 0.12);
-      box-shadow: inset 2px 0px 0px rgba(0, 0, 0, 0.12);
+      -webkit-box-shadow: inset 2px 0px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 2px 0px 0px rgba(0, 0, 0, 0.2);
       right: calc(1.4rem * -0.5); }
     section > div h6 {
       left: 1.2rem;
@@ -486,15 +486,30 @@ section {
       background-color: #b8b8b8; }
     section:nth-of-type(4n+4) > div:nth-of-type(2)::before, section:nth-of-type(4n+4) > div:nth-of-type(2)::after {
       background-color: #EBEBEB; }
-  @media (min-width: 768px) and (max-width: 1023px) {
-    section {
-      -webkit-box-orient: initial;
-      -webkit-box-direction: initial;
-      -ms-flex-direction: initial;
-      flex-direction: initial; } }
   @media (min-width: 1024px) {
     section {
+      height: initial;
+      padding: 2rem;
+      width: initial;
       -webkit-box-orient: initial;
       -webkit-box-direction: initial;
       -ms-flex-direction: initial;
-      flex-direction: initial; } }
+      flex-direction: initial;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+      section > div {
+        padding: 2rem;
+        width: initial; }
+        section > div:first-child {
+          -webkit-box-flex: 1;
+          -ms-flex: 1 0 100%;
+          flex: 1 0 100%; }
+        section > div:last-child {
+          border-top: 0;
+          border-left: 1px dashed #CDCDCD; }
+        section > div:nth-of-type(2)::before {
+          display: none; }
+        section > div:nth-of-type(2)::after {
+          border-radius: 1.4rem 1.4rem 0 0;
+          -webkit-box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2); } }
