@@ -14,54 +14,100 @@
 
 
 // CLASS LEVEL ------------------------------------------------------------------------------------
+$sectionUnit: 1.2rem;
+$pseudoUnit: 1.4rem;
+$boxShadowDiv: -1px 1px 0px rgba(0, 0, 0, 0.12), 2px 2px 0px rgba(0, 0, 0, 0.12);
+$boxShadowPseudoBefore: inset -1px 0px 0px rgba(0, 0, 0, 0.12);
+$boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.12);
 section {
+  // SECTION / GENERAL STYLING
   align-items: center;
-  border: $spaceUnitS solid $colorDarkGray;
-  border-radius: $spaceUnitS;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - (#{$spaceUnitL} * 2));
+  height: 100vh;
   justify-content: center;
-  margin: $spaceUnitL;
-  width: calc(100vw - (#{$spaceUnitL} * 2));
-  > div {
+  padding: $sectionUnit;
+  width: 100vw;
+  & > div {
     align-items: center;
+    background-color: $colorWhite;
+    box-shadow: $boxShadowDiv;
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
     justify-content: center;
-    padding: $spaceUnitM;
+    padding: $sectionUnit;
     position: relative;
     width: 100%;
     &:first-child {
+      padding: calc(#{$sectionUnit} * 0.6) $sectionUnit;
       align-items: flex-start;
-      border-bottom: $spaceUnitS solid $colorDarkGray;
+      border-radius: calc(#{$sectionUnit} * 0.2) calc(#{$sectionUnit} * 0.2) 0 0;
       flex: 0 0 auto;
     }
-    &:nth-child(2)::after {
-      border-bottom: $spaceUnitS dotted $colorDarkGray;
+    &:last-child {
+      border-top: 1px dashed $colorLightGray;
+      border-radius: 0 0 calc(#{$sectionUnit} * 0.2) calc(#{$sectionUnit} * 0.2);
+    }
+    &:nth-of-type(2)::before,
+    &:nth-of-type(2)::after {
       bottom: 0;
       content: '';
       display: block;
-      margin: $spaceUnitS 0;
+      height: $pseudoUnit;
       position: absolute;
       transform: translate(0, 50%);
-      width: calc(100% + #{$spaceUnitS});
+      width: $pseudoUnit;
+      z-index: 1000;
     }
-    > h6 {
-      color: $colorLightGray;
-      left: $spaceUnitM;
+    &:nth-of-type(2)::before {
+      border-radius: 0 calc(#{$sectionUnit} * 1.2) calc(#{$sectionUnit} * 1.2) 0;
+      box-shadow: $boxShadowPseudoBefore;
+      left: calc(#{$pseudoUnit} * -0.5);
+    }
+    &:nth-of-type(2)::after {
+      border-radius: $pseudoUnit 0 0 $pseudoUnit;
+      box-shadow: $boxShadowPseudoAfter;
+      right: calc(#{$pseudoUnit} * -0.5);
+    }
+    & h6 {
+      left: $sectionUnit;
       position: absolute;
-      top: $spaceUnitM;
+      top: calc(#{$sectionUnit} * 0.8);
     }
   }
+  // SECTION / COLOR STYLING
+  @mixin setColor($colorVar) {
+    background-color: $colorVar;
+    & h5, h6 {
+      color: darken($colorVar, 70%);
+    }
+    & > div {
+      &:first-child {
+        background-color: darken($colorVar, 20%);
+      }
+      &:nth-of-type(2)::before, &:nth-of-type(2)::after {
+        background-color: $colorVar;
+      }
+    }
+  }
+  &:nth-of-type(4n+1) {
+    @include setColor($colorC);
+  }
+  &:nth-of-type(4n+2) {
+    @include setColor($colorM);
+  }
+  &:nth-of-type(4n+3) {
+    @include setColor($colorY);
+  }
+  &:nth-of-type(4n+4) {
+    @include setColor($colorK);
+  }
+  // SECTION / MEDIA QUERY
   @include tablet {
     flex-direction: initial;
   }
   @include desktop {
     flex-direction: initial;
   }
-}
-
-form {
 }
