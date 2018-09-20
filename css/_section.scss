@@ -98,7 +98,14 @@ section {
       top: calc(#{$sectionUnit} * 0.8);
     }
   }
-
+  & .secContainer {
+    // CONTINUE HERE FROM MOBILE
+    // Need to put the 2 & 3 into a container
+    // Containter in mobile will be vertical
+    // Containter in desktop will be horizontal
+      // Needs height to be the same, grow direction is column
+    border: 1px dashed red;
+  }
 
 
   // SECTION / COLOR STYLING
@@ -170,9 +177,8 @@ section {
           z-index: 100;
         }
       }
-      &:nth-of-type(n):last-child {
-        border-top: 0;
-        border-radius: 0 0 calc(#{$sectionUnit} * 0.4) 0;
+      &:nth-of-type(2), &:nth-of-type(n):last-child {
+        flex: 1 0 50%;
       }
       &:nth-of-type(2) {
         border-radius: 0 0 0 calc(#{$sectionUnit} * 0.4);
@@ -183,6 +189,10 @@ section {
           border-radius: $pseudoUnit $pseudoUnit 0 0;
           box-shadow: $boxShadowPseudoAfter;
         }
+      }
+      &:nth-of-type(n):last-child {
+        border-top: 0;
+        border-radius: 0 0 calc(#{$sectionUnit} * 0.4) 0;
       }
     }
   }
