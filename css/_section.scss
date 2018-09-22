@@ -1,10 +1,14 @@
 // SECTION / README
 // Styling is based on the following structure.
-// <section>
-//   <div>...</div>  <= Card Title
-//   <div>...</div>  <= Default Styling
-//   <div>...</div>  <= Spotless UI Styling
-// </section>
+/*
+<section class="sectContainer">     <= Section
+  <div class="sectPallet"></div>    <= Section Title
+  <div class="sectPallet">          <= Styles Container
+    <div class="sectBox"></div>     <= Default Style
+    <div class="sectBox"></div>     <= Spotless Style
+  </div>
+</section>
+*/
 
 
 
@@ -19,15 +23,18 @@ $boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
   & h5, h6 {
     color: darken($colorVar, 70%);
   }
-  & > div {
+  & .sectPallet {
     &:first-child {
       background-color: darken($colorVar, 20%);
     }
+  }
+  & .sectBox {
+    &:first-child::before,
+    &:first-child::after {
+      background-color: $colorVar;
+    }
     &:last-child {
       border-top: 1px dashed darken($colorVar, 50%);
-    }
-    &:nth-of-type(2)::before, &:nth-of-type(2)::after {
-      background-color: $colorVar;
     }
   }
 }
@@ -35,45 +42,50 @@ $boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
   &::before {
     border-left: 1px dashed darken($colorVar, 50%);
   }
-  & > div:first-child::before {
-    background-color: $colorVar;
+  & .sectPallet {
+    &:first-child::before {
+      background-color: $colorVar;
+    }
+  }
+  & .sectBox {
+    &:last-child {
+      border-top: 0;
+    }
   }
 }
 
 
 
 // SECTION / GENERAL STYLING
-section {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+.sectContainer {
+  @extend %flexCenCol;
   height: 100vh;
-  justify-content: center;
   padding: $sectionUnit;
   width: 100vw;
-  & > div {
-    align-items: center;
+  & .sectPallet {
+    @extend %flexCenCol;
     background-color: $colorWhite;
     box-shadow: $boxShadowDiv;
-    display: flex;
-    flex-direction: column;
     flex: 1 0 auto;
-    justify-content: center;
-    padding: $sectionUnit;
-    position: relative;
     width: 100%;
     &:first-child {
+      flex: 0 0 auto;
       border-radius: $sectionUnit $sectionUnit 0 0;
       padding: calc(#{$sectionUnit} * 0.6) $sectionUnit;
       align-items: flex-start;
-      border-radius: $sectionUnit $sectionUnit 0 0;
-      flex: 0 0 auto;
     }
     &:last-child {
       border-radius: 0 0 $sectionUnit $sectionUnit;
+      align-items: stretch;
     }
-    &:nth-of-type(2)::before,
-    &:nth-of-type(2)::after {
+  }
+  & .sectBox {
+    @extend %flexCenCol;
+    flex: 1 0 0;
+    padding: $sectionUnit;
+    position: relative;
+    &:first-child::before,
+    &:first-child::after {
       border-radius: $pseudoUnit;
       bottom: 0;
       content: '';
@@ -84,28 +96,21 @@ section {
       width: $pseudoUnit;
       z-index: 100;
     }
-    &:nth-of-type(2)::before {
+    &:first-child::before {
       box-shadow: $boxShadowPseudoBefore;
       left: calc(#{$pseudoUnit} * -0.5);
     }
-    &:nth-of-type(2)::after {
+    &:first-child::after {
       box-shadow: $boxShadowPseudoAfter;
       right: calc(#{$pseudoUnit} * -0.5);
     }
     & h6 {
       left: $sectionUnit;
       position: absolute;
-      top: calc(#{$sectionUnit} * 0.8);
+      top: $sectionUnit;
     }
   }
-  & .secContainer {
-    // CONTINUE HERE FROM MOBILE
-    // Need to put the 2 & 3 into a container
-    // Containter in mobile will be vertical
-    // Containter in desktop will be horizontal
-      // Needs height to be the same, grow direction is column
-    border: 1px dashed red;
-  }
+
 
 
   // SECTION / COLOR STYLING
@@ -130,19 +135,17 @@ section {
     $boxShadowPseudoBefore: inset 0px -1px 0px rgba(0, 0, 0, 0.20);
     $boxShadowPseudoAfter: inset 0px 2px 0px rgba(0, 0, 0, 0.20);
     height: initial;
-    padding: calc(#{$sectionUnit} * 2);
-    width: initial;
-    flex-direction: initial;
-    flex-wrap: wrap;
     position: relative;
+    padding: calc(#{$sectionUnit} * 2);
     &::before {
       content: '';
       display: block;
-      height: calc(100% - (#{$sectionUnit} * 4) - #{$pseudoUnit});
+      height: calc(100% - (#{$sectionUnit} * 4));
       left: 50%;
+      bottom: 0;
       position: absolute;
-      top: calc(#{$sectionUnit * 2} + (#{$pseudoUnit} / 2);
-      z-index: 200;
+      top: calc(#{$sectionUnit} * 2);
+      z-index: 100;
     }
     &:nth-of-type(4n+1) {
       @include setColorDesktop($colorC);
@@ -156,43 +159,30 @@ section {
     &:nth-of-type(4n+4) {
       @include setColorDesktop($colorK);
     }
-    & > div {
-      padding: $sectionUnit;
-      width: initial;
-      &:first-child {
-        border-radius: calc(#{$sectionUnit} * 0.4) calc(#{$sectionUnit} * 0.4) 0 0;
-        flex: 1 0 100%;
-        position: relative;
-        &::before {
-          box-shadow: $boxShadowPseudoBefore;
-          border-radius: calc(#{$sectionUnit} * 1.2);
-          content: '';
-          display: block;
-          height: $pseudoUnit;
-          left: 50%;
-          position: absolute;
-          top: 0;
-          transform: translate(-50%, -50%);
-          width: $pseudoUnit;
-          z-index: 100;
-        }
+    & .sectPallet {
+      &:first-child::before {
+        border-radius: $pseudoUnit;
+        content: '';
+        display: block;
+        height: $pseudoUnit;
+        left: 50%;
+        position: absolute;
+        top: calc(#{$sectionUnit} * 2);
+        transform: translate(-50%, -50%);
+        width: $pseudoUnit;
+        z-index: 100;
+        box-shadow: $boxShadowPseudoBefore;
       }
-      &:nth-of-type(2), &:nth-of-type(n):last-child {
-        flex: 1 0 50%;
+      &:last-child {
+        flex-direction: initial;
       }
-      &:nth-of-type(2) {
-        border-radius: 0 0 0 calc(#{$sectionUnit} * 0.4);
-        &::before {
-          display: none;
-        }
-        &::after {
-          border-radius: $pseudoUnit $pseudoUnit 0 0;
-          box-shadow: $boxShadowPseudoAfter;
-        }
+    }
+    & .sectBox {
+      &:first-child::before {
+        display: none;
       }
-      &:nth-of-type(n):last-child {
-        border-top: 0;
-        border-radius: 0 0 calc(#{$sectionUnit} * 0.4) 0;
+      &:first-child::after {
+        box-shadow: $boxShadowPseudoAfter;
       }
     }
   }

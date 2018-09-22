@@ -32,3 +32,10 @@ $spaceUnitL: 0.9rem;
 $transitionS: 0.3s;
 $transitionM: 0.6s;
 $transitionL: 1s;
+
+%flexCenCol {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
