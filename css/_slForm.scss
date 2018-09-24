@@ -1,0 +1,81 @@
+// SLFORM / VARIABLES & MIXINS
+
+
+
+// SLFORM / GENERAL STYLING
+.slForm {
+  display: flex;
+  flex-direction: column;
+  font-size: $fsP;
+  width: 100%;
+  button[type="submit"] {
+    -webkit-appearance: none !important;
+    background-color: $colorMain;
+    border-radius: 500px;
+    border: 0;
+    color: $colorWhite;
+    letter-spacing: 0.2em;
+    margin-top: 1.4rem;
+    padding: 1em;
+    text-transform: uppercase;
+    box-shadow: 0 3px 0 darken($colorMain, 20%);
+    position: relative;
+    &:disabled {
+      opacity: 0.2;
+      cursor: not-allowed;
+    }
+    &:active {
+      transform: translateY(2px);
+      box-shadow: 0 0 0 darken($colorMain, 20%);
+      outline: none;
+    }
+  }
+  @include desktop {
+    width: 60%;
+  }
+}
+
+.slForm > div {
+  position: relative;
+  input, textarea {
+    letter-spacing: 0.02em;
+    border-radius: 0.2em;
+    border: 1px solid $colorMain;
+    padding: 1.6em 0.6em 0.4em 0.6em;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+  label, span.stringCounter {
+    color: $colorGray;
+    letter-spacing: 0.04em;
+    position: absolute;
+    text-transform: uppercase;
+    transition-duration: $transitionS;
+    line-height: 1;
+  }
+  label {
+    left: 0.6em;
+    top: 0.8em;
+  }
+  span.stringCounter {
+    bottom: 7px;
+    right: 7px;
+  }
+  textarea {
+    resize: none;
+  }
+  &.active label {
+    letter-spacing: 0;
+    opacity: 0.6;
+    transform: scale(0.8) translate(-0.7em, -0.2em);
+  }
+  &.active span.stringCounter {
+    letter-spacing: 0;
+    transform: scale(0.8) translate(0.3em, 0em);
+  }
+  & + div {
+    margin-top: 1.4rem;
+  }
+}
