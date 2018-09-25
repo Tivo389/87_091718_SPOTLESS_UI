@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // TITLE
   // - Explanation.
   //-----------------------------------------------------------------------------------------------
-  // TITLE
-  // - Explanation.
+  // SLFORM INITIALISATION
+  // - If there is a form with '.slForm' it will add eventlisteners and a simple validity checker.
   const slForm = document.querySelector('.slForm');
   if (slForm) {
     const inputElements = slForm.querySelectorAll('input');
@@ -21,15 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
         counter.innerText = currentCount;
       }
     };
-    const inputValidation = () => {
-      // CONTINUE HERE USE checkValidity?
+    const inputValidation = (allInputs) => {
       const submitBtn = slForm.querySelector("button[type='submit']");
+      const validated = allInputs.every(input => input.checkValidity() === true);
       validated ? submitBtn.disabled = false : submitBtn.disabled = true;
     };
     const handleInput = (e) => {
-      const ect = e.currentTarget;
-      countString(ect);
-      inputValidation();
+      countString(e.currentTarget);
+      inputValidation(allInputs);
     };
     const handleFocus = (e) => {
       e.currentTarget.closest('div').classList.add('active');
