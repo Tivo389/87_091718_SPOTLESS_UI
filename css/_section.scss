@@ -59,7 +59,7 @@ $boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
 // SECTION / GENERAL STYLING
 .sectContainer {
   @extend %flexCenCol;
-  height: 100vh;
+  // min-height: 100vh;
   padding: $sectionUnit;
   width: 100vw;
   & .sectPallet {
@@ -77,12 +77,13 @@ $boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
     &:last-child {
       border-radius: 0 0 $sectionUnit $sectionUnit;
       align-items: stretch;
+      justify-content: flex-start;
     }
   }
   & .sectBox {
     @extend %flexCenCol;
-    flex: 1 0 0;
-    padding: $sectionUnit;
+    flex: 1 0 auto;
+    padding: calc(#{$sectionUnit} * 6) $sectionUnit;
     position: relative;
     &:first-child::before,
     &:first-child::after {
@@ -178,6 +179,7 @@ $boxShadowPseudoAfter: inset 2px 0px 0px rgba(0, 0, 0, 0.20);
       }
     }
     & .sectBox {
+      flex: 1 0 0;
       &:first-child::before {
         display: none;
       }

@@ -6,31 +6,5 @@
 @import '_debugger';
 @import '_mediaQuery';
 @import '_section';
-// @import '_basicInputs';
+@import '_slForm';
 
-.slForm {
-}
-
-.slFormGroup {
-  position: relative;
-  input, textarea {
-    border: 1px solid $colorMain;
-    padding: 0.75em;
-    font-size: $fsP;
-  }
-  label {
-    color: $colorGray;
-    font-size: $fsLabel;
-    position: absolute;
-    top: 0.75em;
-    left: 0.75em;
-    transition-duration: $transitionS;
-  }
-  textarea {
-    resize: none;
-  }
-  &.active label {
-    transform: scale(0.8) translate(-0.25em, -0.15em);
-    transform-origin: top left;
-  }
-}
