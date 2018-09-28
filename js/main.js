@@ -23,39 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
         <path fill="#00B331" d="M4.0757325,9.84288027 L0.175728687,6.35627801 C-0.0585762291,6.14680948 -0.0585762291,5.80718004 0.175728687,5.59769057 L1.02423733,4.83910314 C1.25854224,4.62961366 1.63846449,4.62961366 1.87276941,4.83910314 L4.49999854,7.18782425 L10.1272306,2.1571014 C10.3615355,1.94763287 10.7414578,1.94763287 10.9757627,2.1571014 L11.8242713,2.91568883 C12.0585762,3.12515735 12.0585762,3.46478678 11.8242713,3.67427626 L4.92426458,9.84290122 C4.68993622,10.0523698 4.31003742,10.0523698 4.0757325,9.84288027 Z"/>
       </svg>
     `;
+
     // - Display letter count for textarea.
     const countString = (ect) => {
-      if (ect.tagName === 'TEXTAREA') {
-        const counter = ect.closest('div').querySelector('.stringCounter');
-        const currentCount = +ect.maxLength - ect.value.length;
-        currentCount < 50 ? counter.style.color = '#B2005A' : counter.style.color = '#777777';
-        counter.innerText = currentCount;
-      }
+      const counter = ect.closest('div').querySelector('.stringCounter');
+      const currentCount = +ect.maxLength - ect.value.length;
+      currentCount < 50 ? counter.style.color = '#B2005A' : counter.style.color = '#777777';
+      counter.innerText = currentCount;
     };
+
     // - Add an asterisk for any input that has a 'required' attribute.
     const addRequirementSymbol = (input) => {
-      if (input.required) input.closest('div')
-        .insertAdjacentHTML(
-          "afterbegin",
-          `<span
-            class="required"
-            style="position: absolute;
-            font-size: 0;
-            line-height: 0;
-            right: 5px;
-            top: 6px;">
-            ${ svgAsterisk }
-          </span>`
-        )
-    };
+      if (input.required) input.closest('div').insertAdjacentHTML(
+        "afterbegin", `<span class="required">${ svgAsterisk }</span>`
+      )};
+
     // - Update the 'required' symbol based on the validation status.
     const updateRequiredSymbol = (input) => {
       if (input.checkValidity()) {
+        input.closest('div').querySelector('span.required').classList.add('check');
         input.closest('div').querySelector('span.required').innerHTML = svgCheck;
       } else {
+        input.closest('div').querySelector('span.required').classList.remove('check');
         input.closest('div').querySelector('span.required').innerHTML = svgAsterisk;
       }
     };
+
     // - Perform a simple validation for all the inputs.
     const inputValidation = (allInputs) => {
       const submitBtn = slForm.querySelector("button[type='submit']");
@@ -63,26 +56,32 @@ document.addEventListener('DOMContentLoaded', () => {
       validated ? submitBtn.disabled = false : submitBtn.disabled = true;
       allInputs.forEach(input => updateRequiredSymbol(input));
     };
+
     // - Callback for input event.
     const handleInput = (e) => {
       countString(e.currentTarget);
       inputValidation(allInputs);
     };
+
     // - Callback for focus event.
     const handleFocus = (e) => {
       e.currentTarget.closest('div').classList.add('active');
     };
+
     // - Callback for blur event.
     const handleBlur = (e) => {
       if (!e.currentTarget.value.length) e.currentTarget.closest('div').classList.remove('active');
+      inputValidation(allInputs);
     };
+
     // - Apply valid eventListeners & html to all inputs.
     const addInputEventlisteners = (input) => {
-      input.addEventListener('input', handleInput);
+      if (input.tagName === 'TEXTAREA') input.addEventListener('input', handleInput);
       input.addEventListener('focus', handleFocus);
       input.addEventListener('blur', handleBlur);
       addRequirementSymbol(input);
     };
+
     allInputs.forEach(input => {addInputEventlisteners(input)});
   }
   //-----------------------------------------------------------------------------------------------
