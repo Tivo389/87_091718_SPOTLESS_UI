@@ -22,36 +22,34 @@
       <h6>Default</h6>
       <form>
         <div>
-          <label for="firstName">First Name:</label>
+          <label for="firstNameDefault">First Name</label>
           <input
-            id="firstName"
+            id="firstNameDefault"
             type="text"
-            name="firstName"
+            name="firstNameDefault"
             pattern="[A-Za-z\s]+"
-            required
-          />
+            required/>
         </div>
         <div>
-          <label for="lastName">Last Name:</label>
+          <label for="lastNameDefault">Last Name</label>
           <input
+            id="lastNameDefault"
             type="text"
-            id="lastName"
-            name="lastName"
+            name="lastNameDefault"
             pattern="[A-Za-z\s]+"
-            required
-          />
+            required/>
         </div>
         <div>
-          <label for="message">Message</label>
+          <label for="messageDefault">Message</label>
           <textarea
-            id="message"
+            id="messageDefault"
             type="textarea"
-            name="message"
-            maxLength="600"
-            required>
-          </textarea>
+            name="messageDefault"
+            minLength="5"
+            maxLength="300"
+            required></textarea> <!-- Closing tag here to avoid spaces -->
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" ntouchstart="" disabled>Submit</button>
       </form>
     </div>
 
@@ -65,8 +63,7 @@
             type="text"
             name="firstName"
             pattern="[A-Za-z\s]+"
-            required
-          />
+            required/>
         </div>
         <div>
           <label for="lastName">Last Name</label>
@@ -75,12 +72,10 @@
             type="text"
             name="lastName"
             pattern="[A-Za-z\s]+"
-            required
-          />
+            required/>
         </div>
         <div>
           <label for="message">Message</label>
-          <span class="stringCounter">300</span>
           <textarea
             id="message"
             type="textarea"
