@@ -556,16 +556,6 @@ a {
           -webkit-box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2);
           box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2); } }
 
-.waterForm > div input[type="text"] + label, .waterForm > div textarea + label, .waterForm > div .stringCounter {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #777777;
-  letter-spacing: 0.04em;
-  position: absolute;
-  text-transform: uppercase;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  line-height: 100%; }
-
 .waterForm {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -576,108 +566,130 @@ a {
   flex-direction: column;
   font-size: 1.6rem;
   width: 100%; }
-  .waterForm button[type="submit"] {
-    -webkit-appearance: none !important;
-    background-color: #00A5D5;
-    border-radius: 500px;
-    border: 0;
-    -webkit-box-shadow: 0 3px 0 #00566f;
-    box-shadow: 0 3px 0 #00566f;
-    color: #FFFFFF;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: 0.05em;
-    line-height: 100%;
-    margin-top: 1.4rem;
-    padding: 0.8em;
-    text-transform: uppercase;
+  .waterForm > div {
     position: relative; }
-    .waterForm button[type="submit"]:disabled {
-      opacity: 0.2; }
-      .waterForm button[type="submit"]:disabled:hover {
-        cursor: not-allowed; }
-    .waterForm button[type="submit"]:hover {
-      background-color: #0091bc;
-      cursor: pointer; }
-    .waterForm button[type="submit"]:active, .waterForm button[type="submit"]:focus {
-      -webkit-transform: translateY(2px);
-      transform: translateY(2px);
-      -webkit-box-shadow: 0 0 0 #00566f;
-      box-shadow: 0 0 0 #00566f;
-      outline: none; }
+    .waterForm > div + div {
+      margin-top: 1.4rem; }
   @media (min-width: 1024px) {
     .waterForm {
       -webkit-box-align: end;
       -ms-flex-align: end;
       align-items: flex-end;
       width: 80%; }
-      .waterForm button[type="submit"] {
+      .waterForm > div {
         font-size: 88.888888%;
-        padding: 0.7em;
-        width: 33.333333%; } }
+        width: 100%; } }
 
-.waterForm > div {
+.waterForm button[type="submit"] {
+  -webkit-appearance: none !important;
+  background-color: #00A5D5;
+  border-radius: 500px;
+  border: 0;
+  -webkit-box-shadow: 0 3px 0 #00566f;
+  box-shadow: 0 3px 0 #00566f;
+  color: #FFFFFF;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.05em;
+  line-height: 100%;
+  margin-top: 1.4rem;
+  padding: 0.8em;
+  text-transform: uppercase;
   position: relative; }
-  .waterForm > div + div {
-    margin-top: 1.4rem; }
-  .waterForm > div.active label {
-    letter-spacing: 0;
-    opacity: 0.35;
-    -webkit-transform: scale(0.7);
-    transform: scale(0.7); }
-  .waterForm > div.active .stringCounter {
-    letter-spacing: 0;
-    -webkit-transform: scale(0.7);
-    transform: scale(0.7); }
-  .waterForm > div input[type="text"], .waterForm > div textarea {
-    -webkit-appearance: none;
-    border-radius: 0.2em;
-    border: 1px solid #00A5D5;
-    letter-spacing: 0.02em;
-    padding: 1.2em 1.8em 0.2em 0.6em;
-    width: 100%; }
-    .waterForm > div input[type="text"]:focus, .waterForm > div textarea:focus {
-      outline: none; }
-    .waterForm > div input[type="text"] + label, .waterForm > div textarea + label {
-      -webkit-transform-origin: 0 0;
-      transform-origin: 0 0;
-      left: 0.4em;
-      top: 0.35em; }
-  .waterForm > div textarea {
-    resize: none; }
-  .waterForm > div .stringCounter {
-    -webkit-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
-    bottom: 0.5em;
-    right: 0.25em; }
-  .waterForm > div .required {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    right: 6px;
-    top: 7px;
-    -webkit-transform-origin: top right;
-    transform-origin: top right;
-    -webkit-transform: scale(0.8);
-    transform: scale(0.8);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s; }
-    .waterForm > div .required.check {
-      top: 6px;
-      -webkit-transform: scale(1.4);
-      transform: scale(1.4); }
+  .waterForm button[type="submit"]:active, .waterForm button[type="submit"]:focus {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+    -webkit-box-shadow: 0 0 0 #00566f;
+    box-shadow: 0 0 0 #00566f;
+    outline: none; }
+  .waterForm button[type="submit"]:disabled {
+    opacity: 0.2; }
+    .waterForm button[type="submit"]:disabled:hover {
+      cursor: not-allowed; }
+  .waterForm button[type="submit"]:hover {
+    background-color: #0091bc;
+    cursor: pointer; }
   @media (min-width: 1024px) {
-    .waterForm > div {
+    .waterForm button[type="submit"] {
       font-size: 88.888888%;
-      width: 100%; }
-      .waterForm > div input[type="text"], .waterForm > div textarea {
-        padding: 1.4em 2.1em 0.35em 0.7em; }
-      .waterForm > div label {
-        left: 0.5em;
-        top: 0.5em; }
-      .waterForm > div span.stringCounter {
-        bottom: 0.5em;
-        right: 0.35em; }
-      .waterForm > div.active label {
-        letter-spacing: 0.04em;
-        -webkit-transform: scale(0.8);
-        transform: scale(0.8); } }
+      padding: 0.7em;
+      width: 33.333333%; } }
+
+.waterForm > div input[type="text"] + label, .waterForm > div textarea + label, .waterForm > div .stringCounter {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #777777;
+  letter-spacing: 0.04em;
+  position: absolute;
+  text-transform: uppercase;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  line-height: 100%; }
+
+.waterForm > div input[type="text"], .waterForm > div textarea {
+  -webkit-appearance: none;
+  border-radius: 0.2em;
+  border: 1px solid #00A5D5;
+  letter-spacing: 0.02em;
+  padding: 1.2em 1.8em 0.2em 0.6em;
+  width: 100%; }
+  .waterForm > div input[type="text"]:focus, .waterForm > div textarea:focus {
+    outline: none; }
+  .waterForm > div input[type="text"] + label, .waterForm > div textarea + label {
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    left: 0.4em;
+    top: 0.35em; }
+
+.waterForm > div.active input[type="text"] + label,
+.waterForm > div.active textarea + label {
+  letter-spacing: 0;
+  opacity: 0.35;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7); }
+
+.waterForm > div.active .stringCounter {
+  letter-spacing: 0;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7); }
+
+.waterForm > div textarea {
+  resize: none; }
+
+.waterForm > div .required {
+  font-size: 0;
+  line-height: 0;
+  position: absolute;
+  right: 6px;
+  top: 7px;
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s; }
+  .waterForm > div .required.check {
+    top: 6px;
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4); }
+
+.waterForm > div .stringCounter {
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+  bottom: 0.5em;
+  right: 0.25em; }
+
+@media (min-width: 1024px) {
+  .waterForm > div {
+    font-size: 88.888888%;
+    width: 100%; }
+    .waterForm > div input[type="text"], .waterForm > div textarea {
+      padding: 1.4em 2.1em 0.35em 0.7em; }
+    .waterForm > div label {
+      left: 0.5em;
+      top: 0.5em; }
+    .waterForm > div span.stringCounter {
+      bottom: 0.5em;
+      right: 0.35em; }
+    .waterForm > div.active label {
+      letter-spacing: 0.04em;
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8); } }

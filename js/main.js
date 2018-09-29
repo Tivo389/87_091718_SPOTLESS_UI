@@ -3,8 +3,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   //-----------------------------------------------------------------------------------------------
   console.log('INITIAL CHECK');
-  // TITLE
-  // - Explanation.
   //-----------------------------------------------------------------------------------------------
   // WATER FORM INITIALIZATION
   // - If there is a form with '.waterForm' it will add eventlisteners and a simple validity checker.
