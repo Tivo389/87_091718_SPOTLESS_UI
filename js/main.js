@@ -36,7 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const addRequirementSymbol = (input) => {
       if (input.required) input.closest('div').insertAdjacentHTML(
         "afterbegin", `<span class="required">${ svgAsterisk }</span>`
-      )};
+      )
+    };
+
+    // - Add a string-counter for any textarea that has a 'maxLength' attribute.
+    const addStringCounter = (input) => {
+      if (input.attributes.maxLength) input.closest('div').insertAdjacentHTML(
+        "afterbegin", `<span class="stringCounter">${input.attributes.maxLength.value}</span>`
+      )
+    };
 
     // - Update the 'required' symbol based on the validation status.
     const updateRequiredSymbol = (input) => {
@@ -74,9 +82,12 @@ document.addEventListener('DOMContentLoaded', () => {
       inputValidation(allInputs);
     };
 
-    // - Apply valid eventListeners & html to all inputs.
+    // - Apply valid eventListeners & adjust dom for all inputs.
     const addInputEventlisteners = (input) => {
-      if (input.tagName === 'TEXTAREA') input.addEventListener('input', handleInput);
+      if (input.tagName === 'TEXTAREA') {
+        input.addEventListener('input', handleInput);
+        addStringCounter(input);
+      }
       input.addEventListener('focus', handleFocus);
       input.addEventListener('blur', handleBlur);
       addRequirementSymbol(input);
