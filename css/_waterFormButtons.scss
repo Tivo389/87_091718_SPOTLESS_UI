@@ -1,0 +1,41 @@
+// - VARIABLES & MIXINS
+
+
+
+// - GENERAL STYLING
+.waterForm button[type="submit"] {
+  -webkit-appearance: none !important;
+  background-color: $colorMain;
+  border-radius: 500px;
+  border: 0;
+  box-shadow: 0 3px 0 darken($colorMain, 20%);
+  color: $colorWhite;
+  font-family: $ffBody;
+  letter-spacing: 0.05em;
+  line-height: 100%;
+  margin-top: 1.4rem;
+  padding: 0.8em;
+  text-transform: uppercase;
+  position: relative;
+  &:active,
+  &:focus {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 darken($colorMain, 20%);
+    outline: none;
+  }
+  &:disabled {
+    opacity: 0.2;
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+  &:hover {
+    background-color: darken($colorMain, 5%);
+    cursor: pointer;
+  }
+  @include desktop {
+    font-size: 88.888888%;
+    padding: 0.7em;
+    width: 33.333333%;
+  }
+}

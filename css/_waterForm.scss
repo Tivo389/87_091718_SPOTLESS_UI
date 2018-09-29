@@ -1,134 +1,23 @@
-// WATER FORM / VARIABLES & MIXINS
-%textLabel {
-  font-family: $ffBody;
-  color: $colorGray;
-  letter-spacing: 0.04em;
-  position: absolute;
-  text-transform: uppercase;
-  transition-duration: $transitionS;
-  line-height: 100%;
-}
+// - VARIABLES & MIXINS
 
-
-
-// WATER FORM / GENERAL STYLING
+// - GENERAL STYLING
 .waterForm {
   display: flex;
   flex-direction: column;
   font-size: $fsP;
   width: 100%;
-  button[type="submit"] {
-    -webkit-appearance: none !important;
-    background-color: $colorMain;
-    border-radius: 500px;
-    border: 0;
-    box-shadow: 0 3px 0 darken($colorMain, 20%);
-    color: $colorWhite;
-    font-family: $ffBody;
-    letter-spacing: 0.05em;
-    line-height: 100%;
-    margin-top: 1.4rem;
-    padding: 0.8em;
-    text-transform: uppercase;
+  & > div {
     position: relative;
-    &:disabled {
-      opacity: 0.2;
-      &:hover {
-        cursor: not-allowed;
-      }
-    }
-    &:hover {
-      background-color: darken($colorMain, 5%);
-      cursor: pointer;
-    }
-    &:active, &:focus {
-      transform: translateY(2px);
-      box-shadow: 0 0 0 darken($colorMain, 20%);
-      outline: none;
+    & + div {
+      margin-top: 1.4rem;
     }
   }
   @include desktop {
     align-items: flex-end;
     width: 80%;
-    button[type="submit"] {
+    & > div {
       font-size: 88.888888%;
-      padding: 0.7em;
-      width: 33.333333%;
-    }
-  }
-}
-
-.waterForm > div {
-  position: relative;
-  & + div {
-    margin-top: 1.4rem;
-  }
-  &.active label {
-    letter-spacing: 0;
-    opacity: 0.35;
-    transform: scale(0.7);
-  }
-  &.active .stringCounter {
-    letter-spacing: 0;
-    transform: scale(0.7);;
-  }
-  input[type="text"], textarea {
-    -webkit-appearance: none;
-    border-radius: 0.2em;
-    border: 1px solid $colorMain;
-    letter-spacing: 0.02em;
-    padding: 1.2em 1.8em 0.2em 0.6em;
-    width: 100%;
-    &:focus {
-      outline: none;
-    }
-    & + label {
-      @extend %textLabel;
-      transform-origin: 0 0;
-      left: 0.4em;
-      top: 0.35em;
-    }
-  }
-  textarea {
-    resize: none;
-  }
-  .stringCounter {
-    @extend %textLabel;
-    transform-origin: 100% 100%;
-    bottom: 0.5em;
-    right: 0.25em;
-  }
-  .required {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    right: 6px; // px due to svg
-    top: 7px;   // px due to svg
-    transform-origin: top right;
-    transform: scale(0.8);
-    transition-duration: $transitionS;
-    &.check {
-      top: 6px; // px due to svg
-      transform: scale(1.4);
-    }
-  }
-  @include desktop {
-    font-size: 88.888888%;
-    width: 100%;
-    input[type="text"], textarea {
-      padding: 1.4em 2.1em 0.35em 0.7em;
-    }
-    label {
-      left: 0.5em;
-      top: 0.5em;
-    }
-    span.stringCounter {
-      bottom: 0.5em;
-      right: 0.35em;
-    }
-    &.active label {
-      letter-spacing: 0.04em;
-      transform: scale(0.8);
+      width: 100%;
     }
   }
 }
