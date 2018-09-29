@@ -1,5 +1,18 @@
-// SLFORM / GENERAL STYLING
-.slForm {
+// WATER FORM / VARIABLES & MIXINS
+%textLabel {
+  font-family: $ffBody;
+  color: $colorGray;
+  letter-spacing: 0.04em;
+  position: absolute;
+  text-transform: uppercase;
+  transition-duration: $transitionS;
+  line-height: 100%;
+}
+
+
+
+// WATER FORM / GENERAL STYLING
+.waterForm {
   display: flex;
   flex-direction: column;
   font-size: $fsP;
@@ -9,14 +22,14 @@
     background-color: $colorMain;
     border-radius: 500px;
     border: 0;
-    font-family: $ffBody;
-    line-height: 100%;
+    box-shadow: 0 3px 0 darken($colorMain, 20%);
     color: $colorWhite;
+    font-family: $ffBody;
     letter-spacing: 0.05em;
+    line-height: 100%;
     margin-top: 1.4rem;
     padding: 0.8em;
     text-transform: uppercase;
-    box-shadow: 0 3px 0 darken($colorMain, 20%);
     position: relative;
     &:disabled {
       opacity: 0.2;
@@ -45,18 +58,21 @@
   }
 }
 
-.slForm > div {
+.waterForm > div {
   position: relative;
+  & + div {
+    margin-top: 1.4rem;
+  }
   &.active label {
     letter-spacing: 0;
     opacity: 0.35;
     transform: scale(0.7);
   }
-  &.active span.stringCounter {
+  &.active .stringCounter {
     letter-spacing: 0;
     transform: scale(0.7);;
   }
-  input, textarea {
+  input[type="text"], textarea {
     -webkit-appearance: none;
     border-radius: 0.2em;
     border: 1px solid $colorMain;
@@ -66,27 +82,23 @@
     &:focus {
       outline: none;
     }
+    & + label {
+      @extend %textLabel;
+      transform-origin: 0 0;
+      left: 0.4em;
+      top: 0.35em;
+    }
   }
-  label, span.stringCounter {
-    font-family: $ffBody;
-    color: $colorGray;
-    letter-spacing: 0.04em;
-    position: absolute;
-    text-transform: uppercase;
-    transition-duration: $transitionS;
-    line-height: 100%;
+  textarea {
+    resize: none;
   }
-  label {
-    transform-origin: 0 0;
-    left: 0.4em;
-    top: 0.35em;
-  }
-  span.stringCounter {
+  .stringCounter {
+    @extend %textLabel;
     transform-origin: 100% 100%;
     bottom: 0.5em;
     right: 0.25em;
   }
-  span.required {
+  .required {
     font-size: 0;
     line-height: 0;
     position: absolute;
@@ -100,16 +112,10 @@
       transform: scale(1.4);
     }
   }
-  textarea {
-    resize: none;
-  }
-  & + div {
-    margin-top: 1.4rem;
-  }
   @include desktop {
     font-size: 88.888888%;
     width: 100%;
-    input, textarea {
+    input[type="text"], textarea {
       padding: 1.4em 2.1em 0.35em 0.7em;
     }
     label {
