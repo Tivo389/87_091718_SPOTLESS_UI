@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // TITLE
   // - Explanation.
   //-----------------------------------------------------------------------------------------------
-  // SLFORM INITIALISATION
-  // - If there is a form with '.slForm' it will add eventlisteners and a simple validity checker.
-  const slForm = document.querySelector('.slForm');
-  if (slForm) {
-    const inputElements = slForm.querySelectorAll('input');
-    const textareaElements = slForm.querySelectorAll('textarea');
-    const allInputs = [...inputElements, ...textareaElements];
+  // WATER FORM INITIALIZATION
+  // - If there is a form with '.waterForm' it will add eventlisteners and a simple validity checker.
+  const waterForm = document.querySelector('.waterForm');
+  if (waterForm) {
+    const textInputs = waterForm.querySelectorAll("input[type='text']");
+    const textAreas = waterForm.querySelectorAll('textarea');
+    const allInputs = [...textInputs, ...textAreas];
     const svgAsterisk = `
       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
         <path fill="#B2005A" d="M9.26120416,6.5252539 L6.53411788,5.00000001 L9.26120416,3.4747461 C9.48739066,3.34824218 9.56727985,3.05708984 9.43824136,2.82949218 L9.06468365,2.17048828 C8.93566435,1.94289063 8.64817066,1.86777344 8.42750698,2.00402344 L5.76705893,3.64683594 L5.83369718,0.478789063 C5.83922,0.216035156 5.6316155,0 5.37355771,0 L4.6264423,0 C4.36840367,0 4.16078,0.216035156 4.16632199,0.478789063 L4.23294107,3.64683594 L1.57249303,2.00404297 C1.35184852,1.86779298 1.06433566,1.94291015 0.935316343,2.17050781 L0.561758641,2.82951172 C0.432739328,3.05710938 0.512628516,3.34826172 0.73881502,3.47476562 L3.46588213,5.00000001 L0.738795844,6.5252539 C0.512609339,6.65175782 0.432720151,6.94291016 0.561758641,7.17050782 L0.935316343,7.82951172 C1.06433566,8.05710937 1.35184852,8.13222656 1.57249303,7.99597656 L4.23294107,6.35316406 L4.16630282,9.52121094 C4.16078,9.78396485 4.36840367,10 4.6264423,10 L5.37357688,10 C5.6316155,10 5.83923919,9.78396485 5.83371637,9.52121094 L5.76705893,6.35316406 L8.42750698,7.99595703 C8.64815149,8.13220704 8.93566435,8.05708985 9.06468365,7.82949219 L9.43824136,7.17048828 C9.56726068,6.94289062 9.48739066,6.65175782 9.26120416,6.5252539 Z"/>
@@ -24,7 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
       </svg>
     `;
 
-    // - Display letter count for textarea.
+    // - <element> / Perform a simple validation for all the inputs.
+    const inputValidation = (allInputs) => {
+      const submitBtn = waterForm.querySelector("button[type='submit']");
+      const validated = allInputs.every(input => input.checkValidity() === true);
+      validated ? submitBtn.disabled = false : submitBtn.disabled = true;
+      allInputs.forEach(input => updateRequiredSymbol(input));
+    };
+
+    // - <element required> / Add an asterisk to any input with a 'required' attribute
+    const addRequirementSymbol = (input) => {
+      if (input.required) input.closest('div').insertAdjacentHTML(
+        "afterbegin", `<span class="required">${ svgAsterisk }</span>`
+      )
+    };
+
+    // - <textarea> / Add a letter counter for any textarea that has a 'maxLength' attribute
+    const addStringCounter = (input) => {
+      if (input.attributes.maxLength) input.closest('div').insertAdjacentHTML(
+        "afterbegin", `<span class="stringCounter">${input.attributes.maxLength.value}</span>`
+      )
+    };
+
+    // - <textarea> / Show letter count for textarea based
     const countString = (ect) => {
       const counter = ect.closest('div').querySelector('.stringCounter');
       const currentCount = +ect.maxLength - ect.value.length;
@@ -32,21 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       counter.innerText = currentCount;
     };
 
-    // - Add an asterisk for any input that has a 'required' attribute.
-    const addRequirementSymbol = (input) => {
-      if (input.required) input.closest('div').insertAdjacentHTML(
-        "afterbegin", `<span class="required">${ svgAsterisk }</span>`
-      )
-    };
-
-    // - Add a string-counter for any textarea that has a 'maxLength' attribute.
-    const addStringCounter = (input) => {
-      if (input.attributes.maxLength) input.closest('div').insertAdjacentHTML(
-        "afterbegin", `<span class="stringCounter">${input.attributes.maxLength.value}</span>`
-      )
-    };
-
-    // - Update the 'required' symbol based on the validation status.
+    // - <element required> / Update the 'required' symbol based on the validation status
     const updateRequiredSymbol = (input) => {
       if (input.checkValidity()) {
         input.closest('div').querySelector('span.required').classList.add('check');
@@ -57,33 +65,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // - Perform a simple validation for all the inputs.
-    const inputValidation = (allInputs) => {
-      const submitBtn = slForm.querySelector("button[type='submit']");
-      const validated = allInputs.every(input => input.checkValidity() === true);
-      validated ? submitBtn.disabled = false : submitBtn.disabled = true;
-      allInputs.forEach(input => updateRequiredSymbol(input));
-    };
-
-    // - Callback for input event.
+    // - Event / Callback for input event
     const handleInput = (e) => {
       countString(e.currentTarget);
       inputValidation(allInputs);
     };
 
-    // - Callback for focus event.
+    // - Event / Callback for focus event
     const handleFocus = (e) => {
       e.currentTarget.closest('div').classList.add('active');
     };
 
-    // - Callback for blur event.
+    // - Event / Callback for blur event
     const handleBlur = (e) => {
       if (!e.currentTarget.value.length) e.currentTarget.closest('div').classList.remove('active');
       inputValidation(allInputs);
     };
 
-    // - Apply valid eventListeners & adjust dom for all inputs.
-    const addInputEventlisteners = (input) => {
+    // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
+    const addWater = (input) => {
       if (input.tagName === 'TEXTAREA') {
         input.addEventListener('input', handleInput);
         addStringCounter(input);
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       addRequirementSymbol(input);
     };
 
-    allInputs.forEach(input => {addInputEventlisteners(input)});
+    allInputs.forEach(input => {addWater(input)});
   }
   //-----------------------------------------------------------------------------------------------
 });

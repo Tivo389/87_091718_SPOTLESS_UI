@@ -13,34 +13,35 @@
 
 <!-- BASIC FORM / START -------------------------------------------------------------------------->
 <section class="sectContainer">
+  <!-- sectPallet 1/2 -->
   <div class="sectPallet">
     <h5>Basic Form</h5>
   </div>
-
+  <!-- sectPallet 2/2 -->
   <div class="sectPallet">
+    <!-- sectBox 1/2 -->
     <div class="sectBox">
       <h6>Default</h6>
       <form>
         <div>
-          <label for="firstNameDefault">First Name</label>
           <input
             id="firstNameDefault"
             type="text"
             name="firstNameDefault"
             pattern="[A-Za-z\s]+"
             required/>
+          <label for="firstNameDefault">First Name</label>
         </div>
         <div>
-          <label for="lastNameDefault">Last Name</label>
           <input
             id="lastNameDefault"
             type="text"
             name="lastNameDefault"
             pattern="[A-Za-z\s]+"
             required/>
+          <label for="lastNameDefault">Last Name</label>
         </div>
         <div>
-          <label for="messageDefault">Message</label>
           <textarea
             id="messageDefault"
             type="textarea"
@@ -48,34 +49,34 @@
             minLength="5"
             maxLength="300"
             required></textarea> <!-- Closing tag here to avoid spaces -->
+          <label for="messageDefault">Message</label>
         </div>
         <button type="submit" ntouchstart="" disabled>Submit</button>
       </form>
     </div>
-
+    <!-- sectBox 2/2 -->
     <div class="sectBox">
-      <h6>Spotless</h6>
-      <form class="slForm">
+      <h6>Water</h6>
+      <form class="waterForm">
         <div>
-          <label for="firstName">First Name</label>
           <input
             id="firstName"
             type="text"
             name="firstName"
             pattern="[A-Za-z\s]+"
             required/>
+          <label for="firstName">First Name</label>
         </div>
         <div>
-          <label for="lastName">Last Name</label>
           <input
             id="lastName"
             type="text"
             name="lastName"
             pattern="[A-Za-z\s]+"
             required/>
+          <label for="lastName">Last Name</label>
         </div>
         <div>
-          <label for="message">Message</label>
           <textarea
             id="message"
             type="textarea"
@@ -83,6 +84,7 @@
             minLength="5"
             maxLength="300"
             required></textarea> <!-- Closing tag here to avoid spaces -->
+          <label for="message">Message</label>
         </div>
         <button type="submit" ontouchstart="" disabled>Submit</button>
       </form>
@@ -93,10 +95,84 @@
 
 
 <!-- CHECKBOX / START ---------------------------------------------------------------------------->
+<section class="sectContainer">
+  <!-- sectPallet 1/2 -->
+  <div class="sectPallet">
+    <h5>Checkbox</h5>
+  </div>
+  <!-- sectPallet 2/2 -->
+  <div class="sectPallet">
+    <!-- sectBox 1/2 -->
+    <div class="sectBox">
+      <h6>Default</h6>
+      <form>
+        <div>
+          <input id="checkBox1" name="check1" type="checkbox"/>
+          <label for="checkBox1">Default Checkbox</label>
+        </div>
+        <div>
+          <input id="checkBox2" name="check2" type="checkbox" checked="checked">
+          <label for="checkBox2">Checked</label>
+        </div>
+        <div>
+          <input id="checkBox3" name="check3" type="checkbox" disabled="disabled">
+          <label for="checkBox3">Disabled</label>
+        </div>
+        <div>
+          <input id="checkBox4" name="check4" type="checkbox" disabled="disabled" checked="checked">
+          <label for="checkBox4">Checked &amp; Disabled</label>
+        </div>
+      </form>
+    </div>
+    <!-- sectBox 2/2 -->
+    <div class="sectBox">
+      <h6>Water</h6>
+      <form class="waterForm">
+        <div>
+          <input id="checkBox1" name="check1" type="checkbox"/>
+          <label for="checkBox1">Default Checkbox</label>
+        </div>
+        <div>
+          <input id="checkBox2" name="check2" type="checkbox" checked="checked">
+          <label for="checkBox2">Checked</label>
+        </div>
+        <div>
+          <input id="checkBox3" name="check3" type="checkbox" disabled="disabled">
+          <label for="checkBox3">Disabled</label>
+        </div>
+        <div>
+          <input id="checkBox4" name="check4" type="checkbox" disabled="disabled" checked="checked">
+          <label for="checkBox4">Checked &amp; Disabled</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
 
 
 <!-- RADIO BTN / START --------------------------------------------------------------------------->
+  <!-- <div class="input--group">
+    <input id="radio1a" name="radio1" type="radio">
+    <label for="radio1a">Option 1a</label>
+  </div>
+  <div class="input--group">
+    <input id="radio1b" name="radio1" type="radio">
+    <label for="radio1b">Option 1b</label>
+  </div>
+  <hr>
+  <div class="input--group">
+    <input id="radio2" name="radio2" type="radio" checked="checked">
+    <label for="radio2">Checked</label>
+  </div>
+  <div class="input--group">
+    <input id="radio3" name="radio3" type="radio" disabled="disabled">
+    <label for="radio3">Disabled</label>
+  </div>
+  <div class="input--group">
+    <input id="radio4" name="radio4" type="radio" disabled="disabled" checked="checked">
+    <label for="radio4">Checked &amp; Disabled</label>
+  </div> -->
 
 
 
