@@ -567,6 +567,12 @@ a {
   font-size: 1.6rem;
   width: 100%; }
   .waterForm > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
     position: relative; }
     .waterForm > div + div {
       margin-top: 1.4rem; }
@@ -693,3 +699,70 @@ a {
       letter-spacing: 0.04em;
       -webkit-transform: scale(0.8);
       transform: scale(0.8); } }
+
+@-webkit-keyframes keyBoing {
+  0% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1); }
+  33% {
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1); }
+  66% {
+    -webkit-transform: scale(0.9, 0.9);
+    transform: scale(0.9, 0.9); }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1); } }
+
+@keyframes keyBoing {
+  0% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1); }
+  33% {
+    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1); }
+  66% {
+    -webkit-transform: scale(0.9, 0.9);
+    transform: scale(0.9, 0.9); }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1); } }
+
+.waterForm > div input[type='checkbox'] {
+  opacity: 0; }
+  .waterForm > div input[type='checkbox']:checked + label::before {
+    background-color: #00A5D5;
+    color: #FFFFFF;
+    -webkit-animation: 0.3s ease-in-out keyBoing;
+    animation: 0.3s ease-in-out keyBoing; }
+  .waterForm > div input[type='checkbox'] + label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    .waterForm > div input[type='checkbox'] + label::before {
+      opacity: 1;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: #FFFFFF;
+      border-radius: 0.2em;
+      border: 2px solid #00A5D5;
+      content: '';
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      height: 20px;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      align-items: center;
+      margin: 0 6px 0 0;
+      width: 20px; }
+
+/* INPUT SPINNER STATE: DEFAULT CONFIG */
