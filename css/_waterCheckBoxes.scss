@@ -1,0 +1,56 @@
+// - VARIABLES & MIXINS
+@keyframes keyBoing {
+  0% {transform: scale(1, 1);}
+  33% {transform: scale(1.1, 1.1);}
+  66% {transform: scale(0.9, 0.9);}
+  100% {transform: scale(1, 1);}
+}
+
+
+// - GENERAL STYLING
+.waterForm > div {
+  input[type='checkbox'] {
+    opacity: 0;
+    &:checked + label::before {
+      background-color: $colorMain;
+      color: $colorWhite;
+      animation: $transitionS ease-in-out keyBoing;;
+    }
+    + label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      &::before {
+        opacity: 1;
+        align-items: center;
+        background-color: $colorWhite;
+        border-radius: 0.2em;
+        border: 2px solid $colorMain;
+        content: '';
+        display: flex;
+        height: 20px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 6px 0 0;
+        width: 20px;
+      }
+    }
+  }
+  @include desktop {
+  }
+}
+
+
+
+
+
+
+// -----------------------------------------
+/* INPUT SPINNER STATE: DEFAULT CONFIG */
+// input[type=number].spinner--nullify::-webkit-inner-spin-button,
+// input[type=number].spinner--nullify::-webkit-outer-spin-button {
+//   -webkit-appearance: none;
+// }
+// input[type=number].spinner--nullify {
+//   -moz-appearance: textfield; // For firefox
+// }
