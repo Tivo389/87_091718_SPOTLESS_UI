@@ -1,56 +1,87 @@
 // - VARIABLES & MIXINS
 @keyframes keyBoing {
   0% {transform: scale(1, 1);}
-  33% {transform: scale(1.1, 1.1);}
-  66% {transform: scale(0.9, 0.9);}
+  33% {transform: scale(0.85, 0.85);}
+  66% {transform: scale(1.15, 1.15);}
   100% {transform: scale(1, 1);}
 }
 
 
 // - GENERAL STYLING
 .waterForm > div {
+  &.disabled .checkMark {
+    cursor: not-allowed;
+  }
+  &.checked .checkMark {
+    opacity: 1;
+    transform: scale(1.666666);
+  }
   input[type='checkbox'] {
     opacity: 0;
+    width: 28px;
+    height: 28px;
+    position: absolute;
     &:checked + label::before {
+      animation: $transitionS ease-in-out keyBoing;;
       background-color: $colorMain;
       color: $colorWhite;
-      animation: $transitionS ease-in-out keyBoing;;
+    }
+    &:disabled {
+      opacity: 0;
+      + label {
+        opacity: 0.25;
+        cursor: not-allowed;
+      }
     }
     + label {
-        display: flex;
-        justify-content: center;
         align-items: center;
+        display: flex;
+        font-family: $ffBody;
+        justify-content: center;
+        letter-spacing: 0.04em;
+        line-height: 100%;
       &::before {
-        opacity: 1;
         align-items: center;
         background-color: $colorWhite;
         border-radius: 0.2em;
         border: 2px solid $colorMain;
         content: '';
-        display: flex;
-        height: 20px;
-        justify-content: center;
-        align-items: center;
+        height: 28px;
         margin: 0 6px 0 0;
-        width: 20px;
+        opacity: 1;
+        width: 28px;
       }
     }
   }
+  .checkMark {
+    left: 8px;
+    opacity: 0;
+    position: absolute;
+    top: 6px;
+    transform-origin: 50% 50%;
+    transform: scale(2);
+    transition-duration: $transitionS;
+    pointer-events: none;
+    z-index: 10;
+    path {
+      fill: $colorWhite;
+    }
+  }
   @include desktop {
+    &.checked .checkMark {
+      transform: scale(1.333333);
+    }
+    input[type='checkbox'] {
+      width: 20px;
+      height: 20px;
+      + label::before {
+        height: 20px;
+        width: 20px;
+      }
+    }
+    .checkMark {
+      left: 4px;
+      top: 2px;
+    }
   }
 }
-
-
-
-
-
-
-// -----------------------------------------
-/* INPUT SPINNER STATE: DEFAULT CONFIG */
-// input[type=number].spinner--nullify::-webkit-inner-spin-button,
-// input[type=number].spinner--nullify::-webkit-outer-spin-button {
-//   -webkit-appearance: none;
-// }
-// input[type=number].spinner--nullify {
-//   -moz-appearance: textfield; // For firefox
-// }
