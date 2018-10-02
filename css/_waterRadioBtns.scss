@@ -1,0 +1,72 @@
+// - GENERAL STYLING
+.waterForm > div {
+  input[type='radio'] {
+    opacity: 0;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    &:checked  + label {
+      &::before {
+        animation: $transitionS ease-in-out keyBoing;
+        background-color: $colorMain;
+        color: $colorWhite;
+      }
+      &::after {
+        animation: $transitionS ease-in-out keyBoing;
+        opacity: 1;
+      }
+    }
+    &:disabled + label {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+    + label {
+        align-items: center;
+        display: flex;
+        font-family: $ffBody;
+        justify-content: center;
+        letter-spacing: 0.04em;
+        line-height: 100%;
+        position: relative;
+      &::before {
+        align-items: center;
+        background-color: $colorWhite;
+        border-radius: 500px;
+        border: 2px solid $colorMain;
+        content: '';
+        height: 28px;
+        margin: 0 6px 0 0;
+        opacity: 1;
+        width: 28px;
+      }
+      &::after {
+        align-items: center;
+        background-color: $colorWhite;
+        border-radius: 500px;
+        content: '';
+        height: 14px;
+        left: 7px;
+        opacity: 0;
+        position: absolute;
+        width: 14px;
+      }
+    }
+  }
+  @include desktop {
+    &.checked .checkMark {
+      // transform: scale(1.333333);
+    }
+    input[type='radio'] {
+      // width: 20px;
+      // height: 20px;
+      + label::before {
+        // height: 20px;
+        // width: 20px;
+      }
+    }
+    .checkMark {
+      // left: 4px;
+      // top: 4px;
+    }
+  }
+}
