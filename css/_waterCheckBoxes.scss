@@ -1,9 +1,6 @@
 // - GENERAL STYLING
 .waterForm > div {
-  &.disabled .checkMark {
-    cursor: not-allowed;
-  }
-  &.checked .checkMark {
+  &.checked .checkboxCheckMark {
     opacity: 1;
     transform: scale(1.666666);
   }
@@ -44,7 +41,7 @@
       }
     }
   }
-  .checkMark {
+  .checkboxCheckMark {
     left: 8px;
     line-height: 0;
     opacity: 0;
@@ -59,7 +56,7 @@
     }
   }
   @include desktop {
-    &.checked .checkMark {
+    &.checked .checkboxCheckMark {
       transform: scale(1.333333);
     }
     input[type='checkbox'] {
@@ -70,7 +67,7 @@
         width: 20px;
       }
     }
-    .checkMark {
+    .checkboxCheckMark {
       left: 4px;
       top: 4px;
     }
