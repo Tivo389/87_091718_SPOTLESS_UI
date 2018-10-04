@@ -1,79 +1,74 @@
 // - GENERAL STYLING
-.waterForm > div {
-  &.checked .radioCheckMark {
-    opacity: 1;
-    transform: scale(1.666666);
-  }
-  input[type='radio'] {
-    // opacity: 0;
-    width: 28px;
-    height: 28px;
-    // position: absolute;
-    &:checked  + label {
-      &::before {
-        animation: $transitionS ease-in-out keyBoing;
-        background-color: $colorMain;
-        color: $colorWhite;
-      }
-      &::after {
-        animation: $transitionS ease-in-out keyBoing;
-        opacity: 1;
-      }
+.waterForm > div input[type='radio'] {
+  height: 28px;
+  opacity: 0;
+  position: absolute;
+  width: 28px;
+  left: 0;
+  top: 0;
+  &:checked + label {
+    &::before {
+      animation: $transitionS ease-in-out keyBoing;
+      background-color: $colorMain;
     }
-    &:disabled + label {
-      opacity: 0.25;
-      cursor: not-allowed;
-    }
-    + label {
-        align-items: center;
-        display: flex;
-        font-family: $ffBody;
-        justify-content: center;
-        letter-spacing: 0.04em;
-        line-height: 100%;
-        position: relative;
-      &::before {
-        align-items: center;
-        background-color: $colorWhite;
-        border-radius: 500px;
-        border: 2px solid $colorMain;
-        content: '';
-        height: 28px;
-        margin: 0 6px 0 0;
-        opacity: 1;
-        width: 28px;
-      }
+    .radioCheckMark {
+      opacity: 1;
+      transform: scale(1.666666);
     }
   }
-  .radioCheckMark {
-    left: 8px;
-    line-height: 0;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 8px;
-    transform: scale(2);
-    transition-duration: $transitionS;
-    z-index: 10;
-    path {
-      fill: $colorWhite;
+  &:disabled + label {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  + label {
+      align-items: center;
+      display: flex;
+      font-family: $ffBody;
+      justify-content: center;
+      letter-spacing: 0.04em;
+      line-height: 100%;
+      position: relative;
+    &::before {
+      align-items: center;
+      background-color: $colorWhite;
+      border-radius: 500px;
+      border: 2px solid $colorMain;
+      content: '';
+      height: 28px;
+      margin: 0 6px 0 0;
+      opacity: 1;
+      width: 28px;
+    }
+    .radioCheckMark {
+      left: 8px;
+      line-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 8px;
+      transform: scale(2);
+      transition-duration: $transitionS;
+      z-index: 10;
+      path {
+        fill: $colorWhite;
+      }
     }
   }
   @include desktop {
-    &.checked .radioCheckMark {
+    width: 22px;
+    height: 22px;
+    &:checked + label .radioCheckMark {
       transform: scale(1.3);
     }
-    input[type='radio'] {
-      width: 22px;
-      height: 22px;
-      & + label::before {
+    & + label {
+      &::before {
         height: 22px;
         width: 22px;
       }
-    }
-    .radioCheckMark {
-      left: 5px;
-      top: 5px;
+      .radioCheckMark {
+        left: 5px;
+        top: 5px;
+      }
     }
   }
 }

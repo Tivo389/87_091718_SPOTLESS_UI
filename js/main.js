@@ -90,16 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // - Event / Callback for click event
       const handleClick = (e) => {
+        console.log('handleClick');
         e.currentTarget.closest('div').classList.toggle('checked');
       };
 
       // - Event / Callback for mousedown event
       // - Radio status seems to be assigned by this event; which fires before click.
       const handleMouseDown = (e) => {
-        // CONTINUE HERE
-        // If the ect is going from checked status false to true, then add a checked class
-        // If the ect is going from checked status true to false, then remove a checked class
-        // e.currentTarget.querySelector('input').checked = !e.currentTarget.querySelector('input').checked
+        // console.log('handleMouseDown');
+        // const notChecked = !e.currentTarget.closest('div').querySelector('input').checked;
+        // if (notChecked) {
+        //   e.currentTarget.closest('form').querySelectorAll();
+        //   e.currentTarget.closest('div').classList.add('checked');
+        // }
+        // return;
       };
 
       // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
@@ -115,18 +119,23 @@ document.addEventListener('DOMContentLoaded', () => {
           el.addEventListener('blur', handleBlur);
           addRequirementSymbol(el);
         }
-        if (el.type.toUpperCase() === 'CHECKBOX' || el.type.toUpperCase() === 'RADIO') {
+        if (el.type.toUpperCase() === 'CHECKBOX') {
           el.closest('div').insertAdjacentHTML(
             "afterbegin",
             `<span class="${el.type.toLowerCase()}CheckMark">${ svgCheck }</span>`
           );
           if (el.checked) el.closest('div').classList.add('checked');
           if (el.disabled) el.closest('div').classList.add('disabled');
-          if (el.type.toUpperCase() === 'RADIO' && !el.checked && !el.disabled) {
-            el.closest('div').addEventListener('mousedown', handleMouseDown);
-          } else {
-            el.addEventListener('click', handleClick);
-          }
+          el.addEventListener('click', handleClick);
+        }
+        if (el.type.toUpperCase() === 'RADIO') {
+          el.closest('div').querySelector('label').insertAdjacentHTML(
+            "beforeend",
+            `<span class="${el.type.toLowerCase()}CheckMark">${ svgCheck }</span>`
+          );
+          if (el.checked) el.closest('div').querySelector(`.${el.type.toLowerCase()}CheckMark`).classList.add('checked');
+          if (el.disabled) el.closest('div').querySelector(`.${el.type.toLowerCase()}CheckMark`).classList.add('disabled');
+          // el.addEventListener('click', handleClick);
         }
       };
 
