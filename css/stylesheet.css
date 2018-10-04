@@ -732,26 +732,24 @@ a {
       -webkit-transform: scale(0.8);
       transform: scale(0.8); } }
 
-.waterForm > div.checked .checkboxCheckMark {
-  opacity: 1;
-  -webkit-transform: scale(1.66667);
-  transform: scale(1.66667); }
-
 .waterForm > div input[type='checkbox'] {
-  opacity: 0;
-  width: 28px;
   height: 28px;
-  position: absolute; }
+  opacity: 0;
+  position: absolute;
+  width: 28px;
+  left: 0;
+  top: 0; }
   .waterForm > div input[type='checkbox']:checked + label::before {
     -webkit-animation: 0.3s ease-in-out keyBoing;
     animation: 0.3s ease-in-out keyBoing;
-    background-color: #00A5D5;
-    color: #FFFFFF; }
-  .waterForm > div input[type='checkbox']:disabled {
-    opacity: 0; }
-    .waterForm > div input[type='checkbox']:disabled + label {
-      opacity: 0.25;
-      cursor: not-allowed; }
+    background-color: #00A5D5; }
+  .waterForm > div input[type='checkbox']:checked + label .checkboxCheckMark {
+    opacity: 1;
+    -webkit-transform: scale(1.66667);
+    transform: scale(1.66667); }
+  .waterForm > div input[type='checkbox']:disabled + label {
+    opacity: 0.25;
+    cursor: not-allowed; }
   .waterForm > div input[type='checkbox'] + label {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -777,35 +775,33 @@ a {
       margin: 0 6px 0 0;
       opacity: 1;
       width: 28px; }
-
-.waterForm > div .checkboxCheckMark {
-  left: 8px;
-  line-height: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  top: 8px;
-  -webkit-transform: scale(2);
-  transform: scale(2);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  z-index: 10; }
-  .waterForm > div .checkboxCheckMark path {
-    fill: #FFFFFF; }
-
-@media (min-width: 1024px) {
-  .waterForm > div.checked .checkboxCheckMark {
-    -webkit-transform: scale(1.33333);
-    transform: scale(1.33333); }
-  .waterForm > div input[type='checkbox'] {
-    width: 20px;
-    height: 20px; }
-    .waterForm > div input[type='checkbox'] + label::before {
-      height: 20px;
-      width: 20px; }
-  .waterForm > div .checkboxCheckMark {
-    left: 4px;
-    top: 4px; } }
+    .waterForm > div input[type='checkbox'] + label .checkboxCheckMark {
+      left: 8px;
+      line-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 8px;
+      -webkit-transform: scale(2);
+      transform: scale(2);
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      z-index: 10; }
+      .waterForm > div input[type='checkbox'] + label .checkboxCheckMark path {
+        fill: #FFFFFF; }
+  @media (min-width: 1024px) {
+    .waterForm > div input[type='checkbox'] {
+      width: 20px;
+      height: 20px; }
+      .waterForm > div input[type='checkbox']:checked + label .checkboxCheckMark {
+        -webkit-transform: scale(1.33333);
+        transform: scale(1.33333); }
+      .waterForm > div input[type='checkbox'] + label::before {
+        height: 20px;
+        width: 20px; }
+      .waterForm > div input[type='checkbox'] + label .checkboxCheckMark {
+        left: 4px;
+        top: 4px; } }
 
 .waterForm > div input[type='radio'] {
   height: 28px;
@@ -837,8 +833,7 @@ a {
     -ms-flex-pack: center;
     justify-content: center;
     letter-spacing: 0.04em;
-    line-height: 100%;
-    position: relative; }
+    line-height: 100%; }
     .waterForm > div input[type='radio'] + label::before {
       -webkit-box-align: center;
       -ms-flex-align: center;
@@ -870,8 +865,8 @@ a {
       width: 22px;
       height: 22px; }
       .waterForm > div input[type='radio']:checked + label .radioCheckMark {
-        -webkit-transform: scale(1.3);
-        transform: scale(1.3); }
+        -webkit-transform: scale(1.33333);
+        transform: scale(1.33333); }
       .waterForm > div input[type='radio'] + label::before {
         height: 22px;
         width: 22px; }
