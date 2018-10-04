@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('INITIAL CHECK');
   //-----------------------------------------------------------------------------------------------
   // WATER FORM INITIALIZATION
-  // - If there is a form with '.waterForm' it will add eventlisteners and a simple validity checker.
+  // - If there is a '.waterForm' it will add eventlisteners and a simple validity checker.
   const waterForms = document.querySelectorAll('.waterForm');
   if (waterForms) {
     for (const waterForm of waterForms) {
@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <path fill="#00B331" d="M4.0757325,9.84288027 L0.175728687,6.35627801 C-0.0585762291,6.14680948 -0.0585762291,5.80718004 0.175728687,5.59769057 L1.02423733,4.83910314 C1.25854224,4.62961366 1.63846449,4.62961366 1.87276941,4.83910314 L4.49999854,7.18782425 L10.1272306,2.1571014 C10.3615355,1.94763287 10.7414578,1.94763287 10.9757627,2.1571014 L11.8242713,2.91568883 C12.0585762,3.12515735 12.0585762,3.46478678 11.8242713,3.67427626 L4.92426458,9.84290122 C4.68993622,10.0523698 4.31003742,10.0523698 4.0757325,9.84288027 Z"/>
         </svg>
       `;
-
-      // - <checkBox element> /
 
       // - <textInput element> / Perform a simple validation for all the inputs.
       const inputValidation = (allTextInputs) => {
@@ -88,24 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         inputValidation(allTextInputs);
       };
 
-      // - Event / Callback for click event
-      const handleClick = (e) => {
-        console.log('handleClick');
-        e.currentTarget.closest('div').classList.toggle('checked');
-      };
-
-      // - Event / Callback for mousedown event
-      // - Radio status seems to be assigned by this event; which fires before click.
-      const handleMouseDown = (e) => {
-        // console.log('handleMouseDown');
-        // const notChecked = !e.currentTarget.closest('div').querySelector('input').checked;
-        // if (notChecked) {
-        //   e.currentTarget.closest('form').querySelectorAll();
-        //   e.currentTarget.closest('div').classList.add('checked');
-        // }
-        // return;
-      };
-
       // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
       const addWater = (el) => {
         // 999 USE A SWITCH LATER ON / INTENTIONALLY IF IF IF FOR NOW.
@@ -119,26 +99,17 @@ document.addEventListener('DOMContentLoaded', () => {
           el.addEventListener('blur', handleBlur);
           addRequirementSymbol(el);
         }
-        if (el.type.toUpperCase() === 'CHECKBOX') {
-          el.closest('div').insertAdjacentHTML(
+        if (el.type.toUpperCase() === 'CHECKBOX' || el.type.toUpperCase() === 'RADIO') {
+          const elParent = el.closest('div');
+          const elCheckMark = `${el.type.toLowerCase()}CheckMark`;
+          elParent.querySelector('label').insertAdjacentHTML(
             "afterbegin",
-            `<span class="${el.type.toLowerCase()}CheckMark">${ svgCheck }</span>`
+            `<span class="${elCheckMark}">${svgCheck}</span>`
           );
-          if (el.checked) el.closest('div').classList.add('checked');
-          if (el.disabled) el.closest('div').classList.add('disabled');
-          el.addEventListener('click', handleClick);
-        }
-        if (el.type.toUpperCase() === 'RADIO') {
-          el.closest('div').querySelector('label').insertAdjacentHTML(
-            "beforeend",
-            `<span class="${el.type.toLowerCase()}CheckMark">${ svgCheck }</span>`
-          );
-          if (el.checked) el.closest('div').querySelector(`.${el.type.toLowerCase()}CheckMark`).classList.add('checked');
-          if (el.disabled) el.closest('div').querySelector(`.${el.type.toLowerCase()}CheckMark`).classList.add('disabled');
-          // el.addEventListener('click', handleClick);
+          if (el.checked) elParent.querySelector(`.${elCheckMark}`).classList.add('checked');
+          if (el.disabled) elParent.querySelector(`.${elCheckMark}`).classList.add('disabled');
         }
       };
-
       allTextInputs.forEach(input => {addWater(input)});
       allBoxAndBtns.forEach(bb => {addWater(bb)});
     }

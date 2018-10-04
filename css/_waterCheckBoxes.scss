@@ -1,75 +1,73 @@
 // - GENERAL STYLING
-.waterForm > div {
-  &.checked .checkboxCheckMark {
-    opacity: 1;
-    transform: scale(1.666666);
-  }
-  input[type='checkbox'] {
-    opacity: 0;
-    width: 28px;
-    height: 28px;
-    position: absolute;
-    &:checked + label::before {
+.waterForm > div input[type='checkbox'] {
+  height: 28px;
+  opacity: 0;
+  position: absolute;
+  width: 28px;
+  left: 0;
+  top: 0;
+  &:checked + label {
+    &::before {
       animation: $transitionS ease-in-out keyBoing;;
       background-color: $colorMain;
-      color: $colorWhite;
     }
-    &:disabled {
-      opacity: 0;
-      + label {
-        opacity: 0.25;
-        cursor: not-allowed;
-      }
-    }
-    + label {
-        align-items: center;
-        display: flex;
-        font-family: $ffBody;
-        justify-content: center;
-        letter-spacing: 0.04em;
-        line-height: 100%;
-      &::before {
-        align-items: center;
-        background-color: $colorWhite;
-        border-radius: 0.2em;
-        border: 2px solid $colorMain;
-        content: '';
-        height: 28px;
-        margin: 0 6px 0 0;
-        opacity: 1;
-        width: 28px;
-      }
+    .checkboxCheckMark {
+      opacity: 1;
+      transform: scale(1.666666);
     }
   }
-  .checkboxCheckMark {
-    left: 8px;
-    line-height: 0;
-    opacity: 0;
-    pointer-events: none;
-    position: absolute;
-    top: 8px;
-    transform: scale(2);
-    transition-duration: $transitionS;
-    z-index: 10;
-    path {
-      fill: $colorWhite;
+  &:disabled + label {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  + label {
+      align-items: center;
+      display: flex;
+      font-family: $ffBody;
+      justify-content: center;
+      letter-spacing: 0.04em;
+      line-height: 100%;
+    &::before {
+      align-items: center;
+      background-color: $colorWhite;
+      border-radius: 0.2em;
+      border: 2px solid $colorMain;
+      content: '';
+      height: 28px;
+      margin: 0 6px 0 0;
+      opacity: 1;
+      width: 28px;
+    }
+    .checkboxCheckMark {
+      left: 8px;
+      line-height: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 8px;
+      transform: scale(2);
+      transition-duration: $transitionS;
+      z-index: 10;
+      path {
+        fill: $colorWhite;
+      }
     }
   }
   @include desktop {
-    &.checked .checkboxCheckMark {
+    width: 20px;
+    height: 20px;
+    &:checked + label .checkboxCheckMark {
       transform: scale(1.333333);
     }
-    input[type='checkbox'] {
-      width: 20px;
-      height: 20px;
-      + label::before {
+    + label {
+      &::before {
         height: 20px;
         width: 20px;
       }
-    }
-    .checkboxCheckMark {
-      left: 4px;
-      top: 4px;
+      .checkboxCheckMark {
+        left: 4px;
+        top: 4px;
+      }
     }
   }
 }
