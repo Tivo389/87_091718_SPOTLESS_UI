@@ -88,29 +88,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
       const addWater = (el) => {
-        // 999 USE A SWITCH LATER ON / INTENTIONALLY IF IF IF FOR NOW.
-        if (el.type.toUpperCase() === 'TEXTAREA') {
-          el.addEventListener('input', handleInput);
-          addRequirementSymbol(el);
-          addStringCounter(el);
-        }
-        if (el.type.toUpperCase() === 'TEXT') {
+        const inputTypeText = () => {
           el.addEventListener('focus', handleFocus);
           el.addEventListener('blur', handleBlur);
           addRequirementSymbol(el);
-        }
-        if (el.type.toUpperCase() === 'CHECKBOX' || el.type.toUpperCase() === 'RADIO') {
+        };
+        const inputTypeTextArea = () => {
+          el.addEventListener('input', handleInput);
+          addRequirementSymbol(el);
+          addStringCounter(el);
+        };
+        const inputTypeCheckboxOrRadio = () => {
           const elParent = el.closest('div');
           const elCheckMark = `${el.type.toLowerCase()}CheckMark`;
           elParent.querySelector('label').insertAdjacentHTML(
             "afterbegin", `<span class="${elCheckMark}">${svgCheck}</span>`
           );
+          // Not using 'if else' as they BOTH need to be checked individually.
           if (el.checked) elParent.querySelector(`.${elCheckMark}`).classList.add('checked');
           if (el.disabled) elParent.querySelector(`.${elCheckMark}`).classList.add('disabled');
-        }
+        };
+        switch (el.type.toUpperCase()) {
+          case 'TEXT'    : inputTypeText();            break;
+          case 'TEXTAREA': inputTypeTextArea();        break;
+          case 'CHECKBOX': inputTypeCheckboxOrRadio(); break;
+          case 'RADIO'   : inputTypeCheckboxOrRadio(); break;
+          default: console.error('addWater(): Switch Case Error');
+        };
       };
-      allTextInputs.forEach(input => {addWater(input)});
-      allBoxAndBtns.forEach(bb => {addWater(bb)});
+      allTextInputs.forEach(input => { addWater(input) });
+      allBoxAndBtns.forEach(bb => { addWater(bb) });
     }
   }
   //-----------------------------------------------------------------------------------------------
