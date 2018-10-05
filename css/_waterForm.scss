@@ -10,6 +10,11 @@
     display: flex;
     justify-content: flex-start;
     position: relative;
+    & label {
+      font-family: $ffBody;
+      letter-spacing: 0.04em;
+      line-height: 100%;
+    }
     & + div {
       margin-top: 1.4rem;
     }

@@ -609,6 +609,10 @@ a {
     -ms-flex-pack: start;
     justify-content: flex-start;
     position: relative; }
+    .waterForm > div label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      letter-spacing: 0.04em;
+      line-height: 100%; }
     .waterForm > div + div {
       margin-top: 1.4rem; }
   @media (min-width: 1024px) {
@@ -764,12 +768,9 @@ a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
-    letter-spacing: 0.04em;
-    line-height: 100%; }
+    justify-content: center; }
     .waterForm > div input[type='checkbox'] + label::before,
     .waterForm > div input[type='radio'] + label::before {
       -webkit-box-align: center;
@@ -837,3 +838,8 @@ a {
     .waterForm > div input[type='radio'] + label .radioCheckMark {
       left: 5px;
       top: 5px; } }
+
+.waterForm > div input[type='number'] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  border: 2px solid #00A5D5; }
