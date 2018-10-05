@@ -103,8 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const elParent = el.closest('div');
           const elCheckMark = `${el.type.toLowerCase()}CheckMark`;
           elParent.querySelector('label').insertAdjacentHTML(
-            "afterbegin",
-            `<span class="${elCheckMark}">${svgCheck}</span>`
+            "afterbegin", `<span class="${elCheckMark}">${svgCheck}</span>`
           );
           if (el.checked) elParent.querySelector(`.${elCheckMark}`).classList.add('checked');
           if (el.disabled) elParent.querySelector(`.${elCheckMark}`).classList.add('disabled');
