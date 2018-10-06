@@ -1,0 +1,21 @@
+// - VARIABLES & MIXINS
+%extSpinner {
+  align-items: center;
+  background-color: $colorMain;
+  display: flex;
+  justify-content: center;
+}
+
+// - GENERAL STYLING
+.waterForm > div {
+  input[type='number'] {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    border: 2px solid $colorMain;
+    padding: 0.3em 0.6em 0.2em 0.6em;
+    width: 6em;
+    &:focus {
+      outline: none;
+    }
+  }
+}
