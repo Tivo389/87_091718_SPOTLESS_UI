@@ -1,5 +1,3 @@
-// - VARIABLES & MIXINS
-
 // - GENERAL STYLING
 .waterForm {
   display: flex;
@@ -10,13 +8,19 @@
     display: flex;
     justify-content: flex-start;
     position: relative;
-    & label {
+    & input, label {
       font-family: $ffBody;
       letter-spacing: 0.04em;
       line-height: 100%;
     }
     & + div {
       margin-top: 1.4rem;
+    }
+    &.vertical {
+      flex-direction: column;
+      & label {
+        margin-bottom: 0.4em;
+      }
     }
   }
   @include desktop {

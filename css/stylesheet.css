@@ -369,7 +369,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0; }
 
-p, a, input, textarea {
+p, a, textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
   line-height: 125%; }
@@ -609,12 +609,19 @@ a {
     -ms-flex-pack: start;
     justify-content: flex-start;
     position: relative; }
-    .waterForm > div label {
+    .waterForm > div input, .waterForm > div label {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       letter-spacing: 0.04em;
       line-height: 100%; }
     .waterForm > div + div {
       margin-top: 1.4rem; }
+    .waterForm > div.vertical {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .waterForm > div.vertical label {
+        margin-bottom: 0.4em; }
   @media (min-width: 1024px) {
     .waterForm {
       -webkit-box-align: end;
@@ -842,4 +849,8 @@ a {
 .waterForm > div input[type='number'] {
   -webkit-appearance: none;
   -moz-appearance: textfield;
-  border: 2px solid #00A5D5; }
+  border: 2px solid #00A5D5;
+  padding: 0.3em 0.6em 0.2em 0.6em;
+  width: 6em; }
+  .waterForm > div input[type='number']:focus {
+    outline: none; }
