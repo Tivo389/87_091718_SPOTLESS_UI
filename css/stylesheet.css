@@ -619,9 +619,28 @@ a {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -ms-flex-direction: column;
-      flex-direction: column; }
+      flex-direction: column;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start; }
       .waterForm > div.vertical label {
         margin-bottom: 0.4em; }
+    .waterForm > div .required {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+      right: 6px;
+      top: 7px;
+      -webkit-transform-origin: top right;
+      transform-origin: top right;
+      -webkit-transform: scale(0.8);
+      transform: scale(0.8);
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s; }
+      .waterForm > div .required.check {
+        top: 6px;
+        -webkit-transform: scale(1.4);
+        transform: scale(1.4); }
   @media (min-width: 1024px) {
     .waterForm {
       -webkit-box-align: end;
@@ -705,23 +724,6 @@ a {
 
 .waterForm > div textarea {
   resize: none; }
-
-.waterForm > div .required {
-  font-size: 0;
-  line-height: 0;
-  position: absolute;
-  right: 6px;
-  top: 7px;
-  -webkit-transform-origin: top right;
-  transform-origin: top right;
-  -webkit-transform: scale(0.8);
-  transform: scale(0.8);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s; }
-  .waterForm > div .required.check {
-    top: 6px;
-    -webkit-transform: scale(1.4);
-    transform: scale(1.4); }
 
 .waterForm > div .stringCounter {
   -webkit-transform-origin: 100% 100%;
@@ -846,11 +848,101 @@ a {
       left: 5px;
       top: 5px; } }
 
+@-webkit-keyframes fadeInOut {
+  0% {
+    opacity: 0; }
+  30% {
+    opacity: 1; }
+  70% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0; }
+  30% {
+    opacity: 1; }
+  70% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+.waterForm > div .stepperBox .stepperUp, .waterForm > div .stepperBox .stepperDown {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #00A5D5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer; }
+  .waterForm > div .stepperBox .stepperUp:hover, .waterForm > div .stepperBox .stepperDown:hover {
+    background-color: #0091bc; }
+  .waterForm > div .stepperBox .stepperUp:active, .waterForm > div .stepperBox .stepperDown:active {
+    background-color: #007da2; }
+  .waterForm > div .stepperBox .stepperUp path, .waterForm > div .stepperBox .stepperDown path {
+    fill: #FFFFFF; }
+
 .waterForm > div input[type='number'] {
   -webkit-appearance: none;
   -moz-appearance: textfield;
   border: 2px solid #00A5D5;
   padding: 0.3em 0.6em 0.2em 0.6em;
-  width: 6em; }
+  width: 7.2em;
+  height: 32px; }
   .waterForm > div input[type='number']:focus {
     outline: none; }
+
+.waterForm > div .stepperBox {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .waterForm > div .stepperBox .notice {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #B2005A;
+    border-radius: 0.2em;
+    color: #FFFFFF;
+    display: block;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1.2rem;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    left: calc(100% + 6px);
+    letter-spacing: 0.1em;
+    line-height: 100%;
+    opacity: 0;
+    opacity: 0;
+    padding: 0.4em;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 96px; }
+    .waterForm > div .stepperBox .notice.active {
+      opacity: 1; }
+  .waterForm > div .stepperBox .required {
+    right: 70px; }
+  .waterForm > div .stepperBox .stepperUp {
+    right: calc(32px + 2px); }
+  .waterForm > div .stepperBox .stepperDown {
+    right: 0; }

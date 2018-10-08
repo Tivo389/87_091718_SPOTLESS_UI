@@ -18,8 +18,23 @@
     }
     &.vertical {
       flex-direction: column;
+      align-items: flex-start;
       & label {
         margin-bottom: 0.4em;
+      }
+    }
+    .required {
+      font-size: 0;
+      line-height: 0;
+      position: absolute;
+      right: 6px; // px due to svg
+      top: 7px;   // px due to svg
+      transform-origin: top right;
+      transform: scale(0.8);
+      transition-duration: $transitionS;
+      &.check {
+        top: 6px; // px due to svg
+        transform: scale(1.4);
       }
     }
   }
