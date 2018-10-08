@@ -1,9 +1,30 @@
 // - VARIABLES & MIXINS
+$stepperUnit: 32px;
+@keyframes fadeInOut {
+  0% {opacity: 0;}
+  30% {opacity: 1;}
+  70% {opacity: 1;}
+  100% {opacity: 0;}
+}
 %extSpinner {
   align-items: center;
   background-color: $colorMain;
   display: flex;
   justify-content: center;
+  height: $stepperUnit;
+  width: $stepperUnit;
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($colorMain, 5%);
+  }
+  &:active {
+    background-color: darken($colorMain, 10%);
+  }
+  path {
+    fill: #FFFFFF;
+  }
 }
 
 // - GENERAL STYLING
@@ -13,9 +34,51 @@
     -moz-appearance: textfield;
     border: 2px solid $colorMain;
     padding: 0.3em 0.6em 0.2em 0.6em;
-    width: 6em;
+    width: 7.2em;
+    height: $stepperUnit;
     &:focus {
       outline: none;
+    }
+  }
+  .stepperBox {
+    position: relative;
+    display: flex;
+    .notice {
+      align-items: center;
+      background-color: $colorError;
+      border-radius: 0.2em;
+      color: $colorWhite;
+      display: block;
+      display: flex;
+      font-size: 1.2rem;
+      justify-content: center;
+      left: calc(100% + 6px);
+      letter-spacing: 0.1em;
+      line-height: 100%;
+      opacity: 0;
+      opacity: 0;
+      padding: 0.4em;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition-duration: $transitionL;
+      user-select: none;
+      width: 96px;
+      &.active {
+        opacity: 1;
+      }
+    }
+    .required {
+      right: 70px;
+    }
+    .stepperUp, .stepperDown {
+      @extend %extSpinner;
+    }
+    .stepperUp {
+      right: calc(#{$stepperUnit} + 2px);
+    }
+    .stepperDown {
+      right: 0;
     }
   }
 }
