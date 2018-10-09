@@ -78,8 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       // - Event / Callback for click event for the number stepper
-      const handleStepClick = (e) => {
-        const ectClassname = e.currentTarget.className.toUpperCase();
+      const handleStepperClick = (e) => {
         const wrapper = e.currentTarget.closest('.stepperBox');
         const input = wrapper.querySelector("input[type='number']");
         const stepperAdd = () => {
@@ -89,9 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (+input.value === +input.max) {
             wrapper.querySelector('.notice').textContent = 'Max. value';
             wrapper.querySelector('.notice').classList.add('active');
-            wrapper.addEventListener('transitionend', () => {
-              wrapper.querySelector('.notice').classList.remove('active');
-            });
           }
         };
         const stepperMinus = () => {
@@ -101,17 +97,13 @@ document.addEventListener('DOMContentLoaded', () => {
           if (+input.value === +input.min) {
             wrapper.querySelector('.notice').textContent = 'Min. value';
             wrapper.querySelector('.notice').classList.add('active');
-            wrapper.addEventListener('transitionend', () => {
-              wrapper.querySelector('.notice').classList.remove('active');
-            });
           }
         };
-        switch (ectClassname) {
+        switch (e.currentTarget.className.toUpperCase()) {
           case 'STEPPERUP'  : stepperAdd();   break;
           case 'STEPPERDOWN': stepperMinus(); break;
-          default: console.error('handleStepClick(): Switch Case Error');
+          default: console.error('handleStepperClick(): Switch Case Error');
         };
-
       };
 
       // - Event / Callback for input event
@@ -165,8 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="stepperDown">${svgMinus}</span>
             <span class="notice"></span>
           `);
-          wrapper.querySelector('.stepperUp').addEventListener('click', handleStepClick, false);
-          wrapper.querySelector('.stepperDown').addEventListener('click', handleStepClick, false);
+          wrapper.querySelector('.stepperUp').addEventListener('click', handleStepperClick, false);
+          wrapper.querySelector('.stepperDown').addEventListener('click', handleStepperClick, false);
+          wrapper.addEventListener('animationend', () => {
+            wrapper.querySelector('.notice').classList.remove('active');
+          });
           addRequirementSymbol(el);
         };
         switch (el.type.toUpperCase()) {

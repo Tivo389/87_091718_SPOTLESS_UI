@@ -1,8 +1,10 @@
 // - VARIABLES & MIXINS
 $stepperUnit: 32px;
-@keyframes fadeInOut {
+@keyframes keyFlicker {
   0% {opacity: 0;}
-  30% {opacity: 1;}
+  5% {opacity: 1;}
+  10% {opacity: 0;}
+  15% {opacity: 1;}
   70% {opacity: 1;}
   100% {opacity: 0;}
 }
@@ -43,6 +45,7 @@ $stepperUnit: 32px;
   .stepperBox {
     position: relative;
     display: flex;
+    margin-top: 0.6rem;
     .notice {
       align-items: center;
       background-color: $colorError;
@@ -50,12 +53,12 @@ $stepperUnit: 32px;
       color: $colorWhite;
       display: block;
       display: flex;
+      font-family: $ffBody;
       font-size: 1.2rem;
       justify-content: center;
       left: calc(100% + 6px);
       letter-spacing: 0.1em;
       line-height: 100%;
-      opacity: 0;
       opacity: 0;
       padding: 0.4em;
       position: absolute;
@@ -63,9 +66,9 @@ $stepperUnit: 32px;
       transform: translateY(-50%);
       transition-duration: $transitionL;
       user-select: none;
-      width: 96px;
+      width: 90px;
       &.active {
-        opacity: 1;
+        animation: 0.6s ease-in-out 1 keyFlicker;
       }
     }
     .required {
