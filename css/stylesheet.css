@@ -396,7 +396,7 @@ h6 {
   font-size: 1.6rem;
   font-weight: bolder; }
 
-p {
+p, label, input {
   font-size: 1.6rem; }
 
 a {
@@ -848,20 +848,28 @@ a {
       left: 5px;
       top: 5px; } }
 
-@-webkit-keyframes fadeInOut {
+@-webkit-keyframes keyFlicker {
   0% {
     opacity: 0; }
-  30% {
+  5% {
+    opacity: 1; }
+  10% {
+    opacity: 0; }
+  15% {
     opacity: 1; }
   70% {
     opacity: 1; }
   100% {
     opacity: 0; } }
 
-@keyframes fadeInOut {
+@keyframes keyFlicker {
   0% {
     opacity: 0; }
-  30% {
+  5% {
+    opacity: 1; }
+  10% {
+    opacity: 0; }
+  15% {
     opacity: 1; }
   70% {
     opacity: 1; }
@@ -905,7 +913,8 @@ a {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  margin-top: 0.6rem; }
   .waterForm > div .stepperBox .notice {
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -917,6 +926,7 @@ a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.2rem;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
@@ -924,7 +934,6 @@ a {
     left: calc(100% + 6px);
     letter-spacing: 0.1em;
     line-height: 100%;
-    opacity: 0;
     opacity: 0;
     padding: 0.4em;
     position: absolute;
@@ -937,9 +946,10 @@ a {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    width: 96px; }
+    width: 90px; }
     .waterForm > div .stepperBox .notice.active {
-      opacity: 1; }
+      -webkit-animation: 0.6s ease-in-out 1 keyFlicker;
+      animation: 0.6s ease-in-out 1 keyFlicker; }
   .waterForm > div .stepperBox .required {
     right: 70px; }
   .waterForm > div .stepperBox .stepperUp {
