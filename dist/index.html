@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAME HERE</title>
+<link href="css/stylesheet.css" rel="stylesheet">
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<!-- BASIC FORM / START -------------------------------------------------------------------------->
+<section class="sectContainer">
+  <!-- sectPallet 1/2 -->
+  <div class="sectPallet">
+    <h5>Basic Form</h5>
+  </div>
+  <!-- sectPallet 2/2 -->
+  <div class="sectPallet">
+    <!-- sectBox 1/2 -->
+    <div class="sectBox">
+      <h6>Default</h6>
+      <form>
+        <div>
+          <input
+            id="firstNameDefault"
+            type="text"
+            name="firstNameDefault"
+            pattern="[A-Za-z\s]+"
+            required/>
+          <label for="firstNameDefault">First Name</label>
+        </div>
+        <div>
+          <input
+            id="lastNameDefault"
+            type="text"
+            name="lastNameDefault"
+            pattern="[A-Za-z\s]+"
+            required/>
+          <label for="lastNameDefault">Last Name</label>
+        </div>
+        <div>
+          <textarea
+            id="messageDefault"
+            type="textarea"
+            name="messageDefault"
+            minLength="5"
+            maxLength="300"
+            required></textarea> <!-- Closing tag here to avoid spaces -->
+          <label for="messageDefault">Message</label>
+        </div>
+        <button type="submit" ntouchstart="" disabled>Submit</button>
+      </form>
+    </div>
+    <!-- sectBox 2/2 -->
+    <div class="sectBox">
+      <h6>Water</h6>
+      <form class="waterForm">
+        <div>
+          <input
+            id="firstName"
+            type="text"
+            name="firstName"
+            pattern="[A-Za-z\s]+"
+            required/>
+          <label for="firstName">First Name</label>
+        </div>
+        <div>
+          <input
+            id="lastName"
+            type="text"
+            name="lastName"
+            pattern="[A-Za-z\s]+"
+            required/>
+          <label for="lastName">Last Name</label>
+        </div>
+        <div>
+          <textarea
+            id="message"
+            type="textarea"
+            name="message"
+            minLength="5"
+            maxLength="300"
+            required></textarea> <!-- Closing tag here to avoid spaces -->
+          <label for="message">Message</label>
+        </div>
+        <button type="submit" ontouchstart="" disabled>Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CHECKBOX / START ---------------------------------------------------------------------------->
+<section class="sectContainer">
+  <!-- sectPallet 1/2 -->
+  <div class="sectPallet">
+    <h5>Checkbox</h5>
+  </div>
+  <!-- sectPallet 2/2 -->
+  <div class="sectPallet">
+    <!-- sectBox 1/2 -->
+    <div class="sectBox">
+      <h6>Default</h6>
+      <form>
+        <div>
+          <input
+            id="checkBoxDefault1"
+            type="checkbox"
+            name="checkBoxDefault1"/>
+          <label for="checkBoxDefault1">Default</label>
+        </div>
+        <div>
+          <input
+            id="checkBoxDefault2"
+            type="checkbox"
+            name="checkBoxDefault2"
+            checked/>
+          <label for="checkBoxDefault2">Checked</label>
+        </div>
+        <div>
+          <input
+            id="checkBoxDefault3"
+            type="checkbox"
+            name="checkBoxDefault3"
+            disabled/>
+          <label for="checkBoxDefault3">Disabled</label>
+        </div>
+        <div>
+          <input
+            id="checkBoxDefault4"
+            type="checkbox"
+            name="checkBoxDefault4"
+            disabled
+            checked/>
+          <label for="checkBoxDefault4">Checked &amp; Disabled</label>
+        </div>
+      </form>
+    </div>
+    <!-- sectBox 2/2 -->
+    <div class="sectBox">
+      <h6>Water</h6>
+      <form class="waterForm">
+        <div>
+          <input
+            id="checkBox1"
+            type="checkbox"
+            name="checkBox1"/>
+          <label for="checkBox1">Default</label>
+        </div>
+        <div>
+          <input
+            id="checkBox2"
+            type="checkbox"
+            name="checkBox2"
+            checked/>
+          <label for="checkBox2">Checked</label>
+        </div>
+        <div>
+          <input
+            id="checkBox3"
+            type="checkbox"
+            name="checkBox3"
+            disabled>
+          <label for="checkBox3">Disabled</label>
+        </div>
+        <div>
+          <input
+            id="checkBox4"
+            type="checkbox"
+            name="checkBox4"
+            disabled
+            checked>
+          <label for="checkBox4">Checked &amp; Disabled</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- RADIO BTN / START --------------------------------------------------------------------------->
+<section class="sectContainer">
+  <!-- sectPallet 1/2 -->
+  <div class="sectPallet">
+    <h5>Radio Button</h5>
+  </div>
+  <!-- sectPallet 2/2 -->
+  <div class="sectPallet">
+    <!-- sectBox 1/2 -->
+    <div class="sectBox">
+      <h6>Default</h6>
+      <form>
+        <div>
+          <input
+            id="radioDefault1a"
+            type="radio"
+            name="radioDefault"/>
+          <label for="radioDefault1a">Alpha</label>
+        </div>
+        <div>
+          <input
+            id="radioDefault1b"
+            type="radio"
+            name="radioDefault"/>
+          <label for="radioDefault1b">Beta</label>
+        </div>
+        <div>
+          <input
+            id="radioDefault1c"
+            type="radio"
+            name="radioDefault"/>
+          <label for="radioDefault1c">Charlie</label>
+        </div>
+        <hr>
+        <div>
+          <input
+            id="radioDefault3"
+            type="radio"
+            name="radioDefault3"
+            disabled/>
+          <label for="radioDefault3">Disabled</label>
+        </div>
+        <div>
+          <input
+            id="radioDefault4"
+            type="radio"
+            name="radioDefault4"
+            disabled
+            checked/>
+          <label for="radioDefault4">Checked &amp; Disabled</label>
+        </div>
+      </form>
+    </div>
+    <!-- sectBox 2/2 -->
+    <div class="sectBox">
+      <h6>Water</h6>
+      <form class="waterForm">
+        <div>
+          <input
+            id="radio1a"
+            type="radio"
+            name="radio"/>
+          <label for="radio1a">Alpha</label>
+        </div>
+        <div>
+          <input
+            id="radio1b"
+            type="radio"
+            name="radio"/>
+          <label for="radio1b">Beta</label>
+        </div>
+        <div>
+          <input
+            id="radio1c"
+            type="radio"
+            name="radio"/>
+          <label for="radio1c">Charlie</label>
+        </div>
+        <hr>
+        <div>
+          <input
+            id="radio2"
+            type="radio"
+            name="radio2"
+            disabled/>
+          <label for="radio2">Disabled</label>
+        </div>
+        <div>
+          <input
+            id="radio3"
+            type="radio"
+            name="radio3"
+            disabled
+            checked/>
+          <label for="radio3">Checked &amp; Disabled</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- STEPPER / START ------------------------------------------------------------------------------>
+<section class="sectContainer">
+  <!-- sectPallet 1/2 -->
+  <div class="sectPallet">
+    <h5>Number Stepper</h5>
+  </div>
+  <!-- sectPallet 2/2 -->
+  <div class="sectPallet">
+    <!-- sectBox 1/2 -->
+    <div class="sectBox">
+      <h6>Default</h6>
+      <form>
+        <div>
+          <label for="stepperDefault">How many penguins would you like?</label>
+          <input id="stepperDefault" name="stepper" type="number" value="0" min="0" max="10">
+        </div>
+        <hr>
+        <div>
+          <label for="stepperDefault">How many penguins do you need?</label>
+          <input id="stepperDefault" name="stepper" type="number" value="0" min="0" max="10" required>
+        </div>
+      </form>
+    </div>
+    <!-- sectBox 2/2 -->
+    <div class="sectBox">
+      <h6>Water</h6>
+      <form class="waterForm">
+        <div class="vertical">
+          <label for="stepper">How many penguins would you like?</label>
+          <input id="stepper" name="stepper" type="number" value="0" min="0" max="10">
+        </div>
+        <hr>
+        <div class="vertical">
+          <label for="stepper">How many penguins do you need?</label>
+          <input id="stepper" name="stepper" type="number" value="0" min="0" max="10" required>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- SELECT / START ------------------------------------------------------------------------------>
+<!-- <select id="source">
+  <option value="BR" selected="selected">Brasil</option>
+  <option value="FR">France</option>
+  <option value="DE">Germany</option>
+  <option value="IN">India</option>
+  <option value="JP">Japan</option>
+  <option value="RS">Serbia</option>
+  <option value="UK">United Kingdom</option>
+  <option value="US">United States</option>
+</select> -->
+<!-- MULTI-SELECT / START ------------------------------------------------------------------------>
+<!-- PASSWORD INPUT WITH VALIDATION / START ------------------------------------------------------------------------>
+
+
+
+<script src="js/main.min.js"></script>
+</body>
+</html>
