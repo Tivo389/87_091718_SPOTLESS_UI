@@ -9,6 +9,7 @@ $stepperUnit: 32px;
   100% {opacity: 0;}
 }
 %extSpinner {
+  border: 1px dashed red;
   align-items: center;
   background-color: $colorMain;
   display: flex;
