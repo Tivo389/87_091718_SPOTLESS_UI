@@ -20,6 +20,7 @@ if (waterForms) {
     const allBoxAndBtns = [...typeCheckBox, ...typeRadio];
     const allNumbers = [...typeNumber];
 
+    // - CONTINUE HERE MAKE THESE EVENT FUNCTIONS INTO A CLASS
     // - Event / Callback for click event for the number stepper
     const handleStepperClick = (e) => {
       const wrapper = e.currentTarget.closest('.stepperBox');
