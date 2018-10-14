@@ -10,7 +10,7 @@ class EventFunctions {
     const stepperAdd = () => {
       const minValid = +input.value >= +input.min;
       const maxValid = +input.value < +input.max;
-      if (minValid && maxValid) input.value += 1;
+      if (minValid && maxValid) input.value = +input.value + 1;
       if (+input.value === +input.max) {
         wrapper.querySelector('.notice').textContent = 'Max. value';
         wrapper.querySelector('.notice').classList.add('active');
@@ -19,7 +19,7 @@ class EventFunctions {
     const stepperMinus = () => {
       const minValid = +input.value > +input.min;
       const maxValid = +input.value <= +input.max;
-      if (minValid && maxValid) input.value -= 1;
+      if (minValid && maxValid) input.value = +input.value - 1;
       if (+input.value === +input.min) {
         wrapper.querySelector('.notice').textContent = 'Min. value';
         wrapper.querySelector('.notice').classList.add('active');
