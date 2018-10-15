@@ -1,0 +1,23 @@
+// - VARIABLES & MIXINS
+
+// - GENERAL STYLING
+.waterForm {
+  & > select:not([multiple]) {
+    display: none;
+  }
+  & .waterFormPseudoSelect {
+    border: 2px solid $colorMain;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: $ffBody;
+    & li {
+      font-size: $fsP;
+      padding: 0.6em;
+      line-height: 1;
+      &:not(:last-child) {
+        border-bottom: 1px solid $colorMain;
+      }
+    }
+  }
+}

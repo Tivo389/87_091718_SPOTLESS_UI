@@ -18,9 +18,17 @@ if (waterForms) {
     const typeCheckBox = waterForm.querySelectorAll("input[type='checkbox']");
     const typeRadio = waterForm.querySelectorAll("input[type='radio']");
     const typeNumber = waterForm.querySelectorAll("input[type='number']");
+    const typeSelect = waterForm.querySelectorAll("select");
     const allTextInputs = [...typeText, ...typeTextArea];
     const allBoxAndBtns = [...typeCheckBox, ...typeRadio];
     const allNumbers = [...typeNumber];
+    const allSelects = [...typeSelect];
+    const allFormElements = [
+      ...allTextInputs,
+      ...allBoxAndBtns,
+      ...allNumbers,
+      ...allSelects
+    ];
 
     // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
     const addWater = (el) => {
@@ -40,7 +48,8 @@ if (waterForms) {
         const elParent = el.closest('div');
         const elCheckMark = `${el.type.toLowerCase()}CheckMark`;
         elParent.querySelector('label').insertAdjacentHTML(
-          'afterbegin', `<span class="${elCheckMark}">${svg.check}</span>`,
+          'afterbegin',
+          `<span class="${elCheckMark}">${svg.check}</span>`,
         );
         // Not using 'if else' as they BOTH need to be checked individually.
         if (el.checked) elParent.querySelector(`.${elCheckMark}`).classList.add('checked');
@@ -51,7 +60,8 @@ if (waterForms) {
         wrapper.className = 'stepperBox';
         el.parentNode.insertBefore(wrapper, el);
         wrapper.appendChild(el);
-        wrapper.insertAdjacentHTML('beforeend', `
+        wrapper.insertAdjacentHTML(
+          'beforeend', `
           <span class="stepperUp">${svg.add}</span>
           <span class="stepperDown">${svg.minus}</span>
           <span class="notice"></span>
@@ -63,18 +73,35 @@ if (waterForms) {
         });
         elf.addRequirementSymbol(el);
       };
+      const inputTypeSelect = () => {
+        const elParent = el.closest('form.waterForm');
+        const wrapper = document.createElement('ul');
+        const options = el.querySelectorAll('option');
+        wrapper.className = 'waterFormPseudoSelect';
+        elParent.insertBefore(wrapper, el);
+        wrapper.insertAdjacentHTML(
+          'beforeend', `
+          <span class="stepperUp">${svg.add}</span>
+        `);
+        options.forEach((option) => {
+          wrapper.insertAdjacentHTML(
+            'beforeend', `
+            <li value="${option.attributes.value.value}">${option.innerHTML}</li>
+          `);
+        });
+      };
       switch (el.type.toUpperCase()) {
-        case 'TEXT': inputTypeText(); break;
-        case 'TEXTAREA': inputTypeTextArea(); break;
-        case 'CHECKBOX': inputTypeCheckboxOrRadio(); break;
-        case 'RADIO': inputTypeCheckboxOrRadio(); break;
-        case 'NUMBER': inputTypeNumber(); break;
+        case 'TEXT':            inputTypeText();            break;
+        case 'TEXTAREA':        inputTypeTextArea();        break;
+        case 'CHECKBOX':        inputTypeCheckboxOrRadio(); break;
+        case 'RADIO':           inputTypeCheckboxOrRadio(); break;
+        case 'NUMBER':          inputTypeNumber();          break;
+        case 'SELECT-ONE':      inputTypeSelect();          break;
+        // case 'SELECT-MULTIPLE': inputTypeSelect();          break;
         default: console.error('addWater(): Switch Case Error');
       }
     };
-    allTextInputs.forEach((text) => { addWater(text); });
-    allBoxAndBtns.forEach((bb) => { addWater(bb); });
-    allNumbers.forEach((number) => { addWater(number); });
+    allFormElements.forEach((element) => { addWater(element); });
   });
 }
 //-----------------------------------------------------------------------------------------------
