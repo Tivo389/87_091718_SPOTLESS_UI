@@ -15,7 +15,7 @@
     & .checkboxCheckMark,
     & .radioCheckMark {
       opacity: 1;
-      transform: scale(1.666666);
+      transform: scale(2);
     }
   }
   &:disabled + label {
@@ -38,12 +38,12 @@
     }
     & .checkboxCheckMark,
     & .radioCheckMark {
-      left: 8px;
+      left: 9px;
       line-height: 0;
       opacity: 0;
       pointer-events: none;
       position: absolute;
-      top: 8px;
+      top: 9px;
       transform: scale(2);
       transition-duration: $transitionS;
       z-index: 10;
