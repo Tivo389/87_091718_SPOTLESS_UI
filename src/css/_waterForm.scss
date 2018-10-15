@@ -32,9 +32,15 @@
       transform-origin: top right;
       transform: scale(0.8);
       transition-duration: $transitionS;
+      & path {
+        fill: $colorInvalid;
+      }
       &.check {
         top: 6px; // px due to svg
         transform: scale(1.4);
+        & path {
+          fill: $colorValid;
+        }
       }
     }
   }

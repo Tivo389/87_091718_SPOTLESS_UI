@@ -25,7 +25,7 @@ $stepperUnit: 32px;
     background-color: darken($colorMain, 10%);
   }
   path {
-    fill: #FFFFFF;
+    fill: $colorWhite;
   }
 }
 
