@@ -61,11 +61,11 @@ if (waterForms) {
         el.parentNode.insertBefore(wrapper, el);
         wrapper.appendChild(el);
         wrapper.insertAdjacentHTML(
-          'beforeend', `
-          <span class="stepperUp">${svg.add}</span>
-          <span class="stepperDown">${svg.minus}</span>
-          <span class="notice"></span>
-        `);
+          'beforeend',
+          `<span class="stepperUp">${svg.add}</span>
+           <span class="stepperDown">${svg.minus}</span>
+           <span class="notice"></span>`
+        );
         wrapper.querySelector('.stepperUp').addEventListener('click', evf.handleStepperClick, false);
         wrapper.querySelector('.stepperDown').addEventListener('click', evf.handleStepperClick, false);
         wrapper.addEventListener('animationend', () => {
@@ -75,20 +75,30 @@ if (waterForms) {
       };
       const inputTypeSelect = () => {
         const elParent = el.closest('form.waterForm');
-        const wrapper = document.createElement('ul');
-        const options = el.querySelectorAll('option');
-        wrapper.className = 'waterFormPseudoSelect';
-        elParent.insertBefore(wrapper, el);
-        wrapper.insertAdjacentHTML(
-          'beforeend', `
-          <span class="stepperUp">${svg.add}</span>
-        `);
-        options.forEach((option) => {
-          wrapper.insertAdjacentHTML(
-            'beforeend', `
-            <li value="${option.attributes.value.value}">${option.innerHTML}</li>
-          `);
+        const selectWrapper = document.createElement('div');
+        const selectedItem = document.createElement('div');
+        const selectList = document.createElement('ul');
+        selectWrapper.className = 'pseudoSelectWrapper';
+        selectedItem.className = 'pseudoSelected';
+        selectList.className = 'pseudoSelectList';
+        // --- Make pseudoSelected ---
+        elParent.insertBefore(selectedItem, el);
+        selectedItem.insertAdjacentHTML(
+          'beforeend',
+          `<span class="triangleDown">${svg.triangleDown}</span>`
+        );
+        // --- Make pseudoSelectList & List Items ---
+        elParent.insertBefore(selectList, el);
+        el.querySelectorAll('option').forEach((option) => {
+          selectList.insertAdjacentHTML(
+            'beforeend',
+            `<li value="${option.attributes.value.value}">${option.innerHTML}</li>`
+          );
         });
+        // --- Make pseudoSelect Wrapper & place pseudoSelected & pseudoSelectList inside ---
+        elParent.insertBefore(selectWrapper, el);
+        selectWrapper.appendChild(selectedItem);
+        selectWrapper.appendChild(selectList);
       };
       switch (el.type.toUpperCase()) {
         case 'TEXT':            inputTypeText();            break;

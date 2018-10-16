@@ -1,23 +1,62 @@
 // - VARIABLES & MIXINS
+$padTopBtm: 0.6em;
+$btnWidth: calc(#{$fsP} + #{$padTopBtm} * 2.2); // Not 2 to cater for optical adjustment
 
 // - GENERAL STYLING
 .waterForm {
   & > select:not([multiple]) {
     display: none;
   }
-  & .waterFormPseudoSelect {
+  & .pseudoSelectWrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  & .pseudoSelected {
+    border-radius: 0.2em 0.2em 0 0;
     border: 2px solid $colorMain;
+    height: calc(#{$fsP} + #{$padTopBtm} * 2 + 4px);
+    width: 100%;
+  }
+  & .pseudoSelectList {
+    border-radius: 0 0 0.2em 0.2em;
+    border: 2px solid $colorMain;
+    font-family: $ffBody;
     list-style: none;
     margin: 0;
+    overflow: hidden;
     padding: 0;
-    font-family: $ffBody;
+    transform: translateY(-2px);
     & li {
       font-size: $fsP;
-      padding: 0.6em;
+      padding: $padTopBtm $btnWidth $padTopBtm $padTopBtm;
       line-height: 1;
-      &:not(:last-child) {
-        border-bottom: 1px solid $colorMain;
+    }
+  }
+  & .triangleDown {
+    @extend %flexCenCol;
+    position: absolute;
+    background-color: $colorMain;
+    border-radius: 0 0.2em 0.2em 0;
+    height: calc(#{$fsP} + #{$padTopBtm} * 2);
+    width: $btnWidth;
+    right: 0;
+    top: 2px;
+    &:hover {
+      background-color: darken($colorMain, 5%);
+      cursor: pointer;
+    }
+    svg {
+      width: 58%;
+      height: 58%;
+      transform: translateY(-1px); // To cater for optical adjustment
+      & path {
+        fill: $colorWhite;
       }
     }
+  }
+  @include desktop {
   }
 }
