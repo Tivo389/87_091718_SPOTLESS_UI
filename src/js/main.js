@@ -7,10 +7,6 @@ const elf = new ElementFunctions();
 const evf = new EventFunctions();
 const svg = new Svg();
 
-const sampleTest = () => {
-  console.log('sampleTest');
-};
-
 //-----------------------------------------------------------------------------------------------
 // WATER FORM INITIALIZATION
 // - If there is a '.waterForm' it will add eventlisteners and a simple validity checker.
