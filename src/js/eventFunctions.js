@@ -6,6 +6,7 @@ class EventFunctions {
   // - Callback for click event for the select
   handleSelectClick(e) {
     const wrapper = e.currentTarget.closest('.pseudoSelectWrapper');
+    const list = wrapper.querySelector('.pseudoSelectList');
     wrapper.classList.toggle('active');
   }
   // - Callback for click event for the number stepper

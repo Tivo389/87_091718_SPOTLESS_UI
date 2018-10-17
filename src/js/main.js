@@ -32,11 +32,15 @@ if (waterForms) {
 
     // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
     const addWater = (el) => {
+
+      // - INPUTTYPETEXT ------------
       const inputTypeText = () => {
         el.addEventListener('focus', evf.handleFocus, true);
         el.addEventListener('blur', (e) => { evf.handleBlur(e, waterForm, allTextInputs); }, true);
         elf.addRequirementSymbol(el);
       };
+
+      // - INPUTTYPETEXTAREA ------------
       const inputTypeTextArea = () => {
         el.addEventListener('focus', evf.handleFocus, true);
         el.addEventListener('input', (e) => { evf.handleInput(e, waterForm, allTextInputs); }, true);
@@ -44,6 +48,8 @@ if (waterForms) {
         elf.addRequirementSymbol(el);
         elf.addStringCounter(el);
       };
+
+      // - INPUTTYPECHECKBOXORRADIO ------------
       const inputTypeCheckboxOrRadio = () => {
         const elParent = el.closest('div');
         const elCheckMark = `${el.type.toLowerCase()}CheckMark`;
@@ -55,6 +61,8 @@ if (waterForms) {
         if (el.checked) elParent.querySelector(`.${elCheckMark}`).classList.add('checked');
         if (el.disabled) elParent.querySelector(`.${elCheckMark}`).classList.add('disabled');
       };
+
+      // - INPUTTYPENUMBER ------------
       const inputTypeNumber = () => {
         const wrapper = document.createElement('div');
         wrapper.className = 'stepperBox';
@@ -73,6 +81,8 @@ if (waterForms) {
         });
         elf.addRequirementSymbol(el);
       };
+
+      // - INPUTTYPESELECT ------------
       const inputTypeSelect = () => {
         const elParent = el.closest('form.waterForm');
         const defaultSelected = el.querySelector('option[selected]');
@@ -83,15 +93,15 @@ if (waterForms) {
         selectWrapper.className = 'pseudoSelectWrapper';
         selectedItem.className = 'pseudoSelected';
         selectList.className = 'pseudoSelectList';
-        // --- Make pseudoSelected & Btn to open Input ---
+        // - Make pseudoSelected & Btn to open Input
         elParent.insertBefore(selectedItem, el);
         selectedItem.insertAdjacentHTML(
           'beforeend',
           `<p>${defaultSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
         );
-        // --- Add eventListener to Btn ---
+        // - Add eventListener to pseudoBtn
         elParent.querySelector('.triangleDown').addEventListener('click', evf.handleSelectClick, true);
-        // --- Make pseudoSelectList & List Items ---
+        // - Make pseudoSelectList & List Items
         elParent.insertBefore(selectList, el);
         el.querySelectorAll('option').forEach((option) => {
           selectList.insertAdjacentHTML(
@@ -99,11 +109,18 @@ if (waterForms) {
             `<li value="${option.attributes.value.value}">${option.innerHTML}</li>`
           );
         });
-        // --- Make pseudoSelect Wrapper & place pseudoSelected & pseudoSelectList inside ---
+        // - Add eventListener to pseudoList
+        selectList.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectedItem.querySelector('p').textContent = e.target.textContent;
+        });
+        // - Make pseudoSelect Wrapper & place pseudoSelected & pseudoSelectList inside
         elParent.insertBefore(selectWrapper, el);
         selectWrapper.appendChild(selectedItem);
         selectWrapper.appendChild(selectList);
       };
+
+      // - SWITCH STATEMENT ------------
       switch (el.type.toUpperCase()) {
         case 'TEXT':            inputTypeText();            break;
         case 'TEXTAREA':        inputTypeTextArea();        break;
