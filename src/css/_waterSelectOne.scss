@@ -1,6 +1,7 @@
 // - VARIABLES & MIXINS
 $padTopBtm: 0.6em;
-$btnWidth: calc(#{$fsP} + #{$padTopBtm} * 2.2); // Not 2 to cater for optical adjustment
+$btnWidthHeight: calc(#{$fsP} + #{$padTopBtm} * 2);
+$inputHeight: calc(#{$fsP} + #{$padTopBtm} * 2);
 
 // - GENERAL STYLING
 .waterForm {
@@ -8,52 +9,63 @@ $btnWidth: calc(#{$fsP} + #{$padTopBtm} * 2.2); // Not 2 to cater for optical ad
     display: none;
   }
   & .pseudoSelectWrapper {
+    border-radius: 0.4rem;
+    border: 2px solid $colorMain;
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    height: $inputHeight;
+    overflow: hidden;
+    justify-content: flex-start;
     position: relative;
+    &.active {
+      height: initial;
+      overflow: initial;
+    }
   }
   & .pseudoSelected {
-    border-radius: 0.2em 0.2em 0 0;
-    border: 2px solid $colorMain;
-    height: calc(#{$fsP} + #{$padTopBtm} * 2 + 4px);
-    width: 100%;
+    & p {
+      font-family: $ffBody;
+      padding: calc(#{$padTopBtm} - 1px) $btnWidthHeight calc(#{$padTopBtm} - 1px) $padTopBtm;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    & .triangleDown {
+      @extend %flexCenCol;
+      border-radius: 0 0.4rem 0.4rem 0;
+      position: absolute;
+      background-color: $colorMain;
+      height: calc(#{$fsP} + #{$padTopBtm} * 2);
+      width: $btnWidthHeight;
+      transform: translate(2px, -2px);
+      right: 0;
+      top: 0;
+      @extend %onHover;
+      & svg {
+        width: 58%;
+        height: 58%;
+        transform: translateY(-1px); // To cater for optical adjustment
+        & path {
+          fill: $colorWhite;
+        }
+      }
+    }
   }
   & .pseudoSelectList {
-    border-radius: 0 0 0.2em 0.2em;
-    border: 2px solid $colorMain;
+    border-top: 2px solid $colorMain;
     font-family: $ffBody;
     list-style: none;
     margin: 0;
-    overflow: hidden;
     padding: 0;
-    transform: translateY(-2px);
+    transition-duration: $transitionL;
     & li {
       font-size: $fsP;
-      padding: $padTopBtm $btnWidth $padTopBtm $padTopBtm;
+      padding: $padTopBtm calc(#{$btnWidthHeight} * 1.4) $padTopBtm $padTopBtm;
       line-height: 1;
-    }
-  }
-  & .triangleDown {
-    @extend %flexCenCol;
-    position: absolute;
-    background-color: $colorMain;
-    border-radius: 0 0.2em 0.2em 0;
-    height: calc(#{$fsP} + #{$padTopBtm} * 2);
-    width: $btnWidth;
-    right: 0;
-    top: 2px;
-    &:hover {
-      background-color: darken($colorMain, 5%);
-      cursor: pointer;
-    }
-    svg {
-      width: 58%;
-      height: 58%;
-      transform: translateY(-1px); // To cater for optical adjustment
-      & path {
-        fill: $colorWhite;
+      letter-spacing: 0.02em;
+      &:hover {
+        background-color: $colorMain;
+        color: $colorWhite;
       }
     }
   }

@@ -17,6 +17,7 @@
   padding: 0.8em;
   text-transform: uppercase;
   position: relative;
+  @extend %onHover;
   &:active,
   &:focus {
     transform: translateY(2px);
@@ -28,10 +29,6 @@
     &:hover {
       cursor: not-allowed;
     }
-  }
-  &:hover {
-    background-color: darken($colorMain, 5%);
-    cursor: pointer;
   }
   @include desktop {
     font-size: 88.888888%;
