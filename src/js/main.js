@@ -34,17 +34,16 @@ if (waterForms) {
       ...allSelects
     ];
 
-    // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
+    // INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
     const addWater = (el) => {
-
-      // - INPUTTYPETEXT ------------
+      // INPUT TYPE TEXT
       const inputTypeText = () => {
         el.addEventListener('focus', evf.handleFocus, true);
         el.addEventListener('blur', (e) => { evf.handleBlur(e, waterForm, allTextInputs); }, true);
         elf.addRequirementSymbol(el);
       };
 
-      // - INPUTTYPETEXTAREA ------------
+      // INPUT TYPE TEXTAREA
       const inputTypeTextArea = () => {
         el.addEventListener('focus', evf.handleFocus, true);
         el.addEventListener('input', (e) => { evf.handleInput(e, waterForm, allTextInputs); }, true);
@@ -53,7 +52,7 @@ if (waterForms) {
         elf.addStringCounter(el);
       };
 
-      // - INPUTTYPECHECKBOXORRADIO ------------
+      // INPUT TYPE CHECKBOXORRADIO
       const inputTypeCheckboxOrRadio = () => {
         const elParent = el.closest('div');
         const elCheckMark = `${el.type.toLowerCase()}CheckMark`;
@@ -61,12 +60,12 @@ if (waterForms) {
           'afterbegin',
           `<span class="${elCheckMark}">${svg.check}</span>`,
         );
-        // Not using 'if else' as they BOTH need to be checked individually.
+        // - Not using 'if else' as they BOTH need to be checked individually.
         if (el.checked) elParent.querySelector(`.${elCheckMark}`).classList.add('checked');
         if (el.disabled) elParent.querySelector(`.${elCheckMark}`).classList.add('disabled');
       };
 
-      // - INPUTTYPENUMBER ------------
+      // INPUT TYPE NUMBER
       const inputTypeNumber = () => {
         const wrapper = document.createElement('div');
         wrapper.className = 'stepperBox';
@@ -78,31 +77,36 @@ if (waterForms) {
            <span class="stepperDown">${svg.minus}</span>
            <span class="notice"></span>`
         );
-        wrapper.querySelector('.stepperUp').addEventListener('click', evf.handleClickStepper, true);
-        wrapper.querySelector('.stepperDown').addEventListener('click', evf.handleClickStepper, true);
+        wrapper.querySelector('.stepperUp').addEventListener('click', (e) => {
+          evf.handleClickStepper(e, wrapper);
+        }, true);
+        wrapper.querySelector('.stepperDown').addEventListener('click', (e) => {
+          evf.handleClickStepper(e, wrapper);
+        }, true);
         wrapper.addEventListener('animationend', () => {
           wrapper.querySelector('.notice').classList.remove('active');
         });
         elf.addRequirementSymbol(el);
       };
 
-      // - INPUTTYPESELECT ------------
+      // INPUT TYPE SELECT
       const inputTypeSelect = () => {
         const elParent = el.closest('form.waterForm');
-        const defaultSelected = el.querySelector('option[selected]');
-        const defaultSelectedText = defaultSelected ? defaultSelected.textContent : '–';
-        const defaultSelectedValue = defaultSelected ? defaultSelected.value : '–';
-        const selectWrapper = document.createElement('div');
-        const selectedItem = document.createElement('div');
+        const srcSelected = el.querySelector('option[selected]');
+        const srcOptions = elParent.querySelector('select').querySelectorAll('option');
+        const srcSelectedText = srcSelected ? srcSelected.textContent : '–';
+        const srcSelectedValue = srcSelected ? srcSelected.value : '–';
+        const wrapper = document.createElement('div');
+        const selected = document.createElement('div');
         const selectList = document.createElement('ul');
-        selectWrapper.className = 'pseudoSelectWrapper';
-        selectedItem.className = 'pseudoSelected';
+        wrapper.className = 'pseudoSelectWrapper';
+        selected.className = 'pseudoSelected';
         selectList.className = 'pseudoSelectList';
         // - Make pseudoSelected & Btn to open Input
-        elParent.insertBefore(selectedItem, el);
-        selectedItem.insertAdjacentHTML(
+        elParent.insertBefore(selected, el);
+        selected.insertAdjacentHTML(
           'beforeend',
-          `<p value="${defaultSelectedValue}">${defaultSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
+          `<p value="${srcSelectedValue}">${srcSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
         );
         // - Make pseudoSelectList & List Items
         elParent.insertBefore(selectList, el);
@@ -113,15 +117,19 @@ if (waterForms) {
           );
         });
         // - Make pseudoSelect Wrapper & place pseudoSelected & pseudoSelectList inside
-        elParent.insertBefore(selectWrapper, el);
-        selectWrapper.appendChild(selectedItem);
-        selectWrapper.appendChild(selectList);
+        elParent.insertBefore(wrapper, el);
+        wrapper.appendChild(selected);
+        wrapper.appendChild(selectList);
         // - Add eventListener to pseudoSelectWrapper & pseudoSelectList
-        selectWrapper.addEventListener('click', evf.handleClickSelectOne, true);
-        selectList.addEventListener('click', evf.handleClickSelectList, true);
+        wrapper.addEventListener('click', (e) => {
+          evf.handleClickSelectOne(e, wrapper);
+        }, true);
+        selectList.addEventListener('click', (e) => {
+          evf.handleClickSelectList(e, srcOptions, selected);
+        }, true);
       };
 
-      // - SWITCH STATEMENT ------------
+      // - SWITCH STATEMENT
       switch (el.type.toUpperCase()) {
         case 'TEXT':            inputTypeText();            break;
         case 'TEXTAREA':        inputTypeTextArea();        break;
