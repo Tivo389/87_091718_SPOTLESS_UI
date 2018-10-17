@@ -7,6 +7,10 @@ const elf = new ElementFunctions();
 const evf = new EventFunctions();
 const svg = new Svg();
 
+const sampleTest = () => {
+  console.log('sampleTest');
+};
+
 //-----------------------------------------------------------------------------------------------
 // WATER FORM INITIALIZATION
 // - If there is a '.waterForm' it will add eventlisteners and a simple validity checker.
@@ -74,8 +78,8 @@ if (waterForms) {
            <span class="stepperDown">${svg.minus}</span>
            <span class="notice"></span>`
         );
-        wrapper.querySelector('.stepperUp').addEventListener('click', evf.handleStepperClick, true);
-        wrapper.querySelector('.stepperDown').addEventListener('click', evf.handleStepperClick, true);
+        wrapper.querySelector('.stepperUp').addEventListener('click', evf.handleClickStepper, true);
+        wrapper.querySelector('.stepperDown').addEventListener('click', evf.handleClickStepper, true);
         wrapper.addEventListener('animationend', () => {
           wrapper.querySelector('.notice').classList.remove('active');
         });
@@ -87,6 +91,7 @@ if (waterForms) {
         const elParent = el.closest('form.waterForm');
         const defaultSelected = el.querySelector('option[selected]');
         const defaultSelectedText = defaultSelected ? defaultSelected.textContent : '–';
+        const defaultSelectedValue = defaultSelected ? defaultSelected.value : '–';
         const selectWrapper = document.createElement('div');
         const selectedItem = document.createElement('div');
         const selectList = document.createElement('ul');
@@ -97,10 +102,8 @@ if (waterForms) {
         elParent.insertBefore(selectedItem, el);
         selectedItem.insertAdjacentHTML(
           'beforeend',
-          `<p>${defaultSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
+          `<p value="${defaultSelectedValue}">${defaultSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
         );
-        // - Add eventListener to pseudoBtn
-        elParent.querySelector('.triangleDown').addEventListener('click', evf.handleSelectClick, true);
         // - Make pseudoSelectList & List Items
         elParent.insertBefore(selectList, el);
         el.querySelectorAll('option').forEach((option) => {
@@ -109,15 +112,13 @@ if (waterForms) {
             `<li value="${option.attributes.value.value}">${option.innerHTML}</li>`
           );
         });
-        // - Add eventListener to pseudoList
-        selectList.addEventListener('click', (e) => {
-          e.stopPropagation();
-          selectedItem.querySelector('p').textContent = e.target.textContent;
-        });
         // - Make pseudoSelect Wrapper & place pseudoSelected & pseudoSelectList inside
         elParent.insertBefore(selectWrapper, el);
         selectWrapper.appendChild(selectedItem);
         selectWrapper.appendChild(selectList);
+        // - Add eventListener to pseudoSelectWrapper & pseudoSelectList
+        selectWrapper.addEventListener('click', evf.handleClickSelectOne, true);
+        selectList.addEventListener('click', evf.handleClickSelectList, true);
       };
 
       // - SWITCH STATEMENT ------------
