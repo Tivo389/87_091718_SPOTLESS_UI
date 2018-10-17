@@ -3,6 +3,11 @@ import ElementFunctions from './elementFunctions.js';
 const elf = new ElementFunctions();
 
 class EventFunctions {
+  // - Callback for click event for the select
+  handleSelectClick(e) {
+    const wrapper = e.currentTarget.closest('.pseudoSelectWrapper');
+    wrapper.classList.toggle('active');
+  }
   // - Callback for click event for the number stepper
   handleStepperClick(e) {
     const wrapper = e.currentTarget.closest('.stepperBox');

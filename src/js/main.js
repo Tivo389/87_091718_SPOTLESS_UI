@@ -33,14 +33,14 @@ if (waterForms) {
     // - INITIALIZATION / Apply valid eventListeners & adjust dom for all inputs
     const addWater = (el) => {
       const inputTypeText = () => {
-        el.addEventListener('focus', evf.handleFocus, false);
-        el.addEventListener('blur', (e) => { evf.handleBlur(e, waterForm, allTextInputs); }, false);
+        el.addEventListener('focus', evf.handleFocus, true);
+        el.addEventListener('blur', (e) => { evf.handleBlur(e, waterForm, allTextInputs); }, true);
         elf.addRequirementSymbol(el);
       };
       const inputTypeTextArea = () => {
-        el.addEventListener('focus', evf.handleFocus, false);
-        el.addEventListener('input', (e) => { evf.handleInput(e, waterForm, allTextInputs); }, false);
-        el.addEventListener('blur', (e) => { evf.handleBlur(e, waterForm, allTextInputs); }, false);
+        el.addEventListener('focus', evf.handleFocus, true);
+        el.addEventListener('input', (e) => { evf.handleInput(e, waterForm, allTextInputs); }, true);
+        el.addEventListener('blur', (e) => { evf.handleBlur(e, waterForm, allTextInputs); }, true);
         elf.addRequirementSymbol(el);
         elf.addStringCounter(el);
       };
@@ -66,8 +66,8 @@ if (waterForms) {
            <span class="stepperDown">${svg.minus}</span>
            <span class="notice"></span>`
         );
-        wrapper.querySelector('.stepperUp').addEventListener('click', evf.handleStepperClick, false);
-        wrapper.querySelector('.stepperDown').addEventListener('click', evf.handleStepperClick, false);
+        wrapper.querySelector('.stepperUp').addEventListener('click', evf.handleStepperClick, true);
+        wrapper.querySelector('.stepperDown').addEventListener('click', evf.handleStepperClick, true);
         wrapper.addEventListener('animationend', () => {
           wrapper.querySelector('.notice').classList.remove('active');
         });
@@ -75,18 +75,22 @@ if (waterForms) {
       };
       const inputTypeSelect = () => {
         const elParent = el.closest('form.waterForm');
+        const defaultSelected = el.querySelector('option[selected]');
+        const defaultSelectedText = defaultSelected ? defaultSelected.textContent : '–';
         const selectWrapper = document.createElement('div');
         const selectedItem = document.createElement('div');
         const selectList = document.createElement('ul');
         selectWrapper.className = 'pseudoSelectWrapper';
         selectedItem.className = 'pseudoSelected';
         selectList.className = 'pseudoSelectList';
-        // --- Make pseudoSelected ---
+        // --- Make pseudoSelected & Btn to open Input ---
         elParent.insertBefore(selectedItem, el);
         selectedItem.insertAdjacentHTML(
           'beforeend',
-          `<span class="triangleDown">${svg.triangleDown}</span>`
+          `<p>${defaultSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
         );
+        // --- Add eventListener to Btn ---
+        elParent.querySelector('.triangleDown').addEventListener('click', evf.handleSelectClick, true);
         // --- Make pseudoSelectList & List Items ---
         elParent.insertBefore(selectList, el);
         el.querySelectorAll('option').forEach((option) => {
