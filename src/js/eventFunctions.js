@@ -4,35 +4,31 @@ const elf = new ElementFunctions();
 
 class EventFunctions {
   // - Upon click event for pseudoUList
-  handleClickSelectList(e) {
-    const elParent = e.currentTarget.closest('form.waterForm');
-    const realSelect = elParent.querySelector('select');
-    const realOptions = realSelect.querySelectorAll('option');
-    const wrapper = e.currentTarget.closest('.pseudoSelectWrapper');
-    const selectedItem = wrapper.querySelector('.pseudoSelected');
-    const selectedItemText = selectedItem.querySelector('p');
+  handleClickSelectList(e, srcOptions, selected) {
+    const selectedText = selected.querySelector('p');
     const clickItemValue = e.target.attributes.value;
-    let selectedItemValue = selectedItemText.attributes.value;
+    let selectedValue = selectedText.attributes.value;
     e.stopPropagation();
-    selectedItemText.textContent = e.target.textContent;
-    selectedItemValue.value = clickItemValue.value;
-    realOptions.forEach((option) => {
+    selectedText.textContent = e.target.textContent;
+    selectedValue.value = clickItemValue.value;
+    srcOptions.forEach((option) => {
       if (option.value === clickItemValue.value) option.selected = true;
     });
   }
-  // - Upon click event for pseudoSelectBtn
-  handleClickSelectOne(e) {
-    const wrapper = e.currentTarget.closest('.pseudoSelectWrapper');
-    const list = wrapper.querySelector('.pseudoSelectList');
+
+  // - Upon click event for pseudoSelectWrapper
+  handleClickSelectOne(e, wrapper) {
     wrapper.classList.toggle('active');
   }
+
   // - Upon click event for numberStepper
-  handleClickStepper(e) {
-    const wrapper = e.currentTarget.closest('.stepperBox');
+  handleClickStepper(e, wrapper) {
     const input = wrapper.querySelector("input[type='number']");
+    let minValid;
+    let maxValid;
     const stepperAdd = () => {
-      const minValid = +input.value >= +input.min;
-      const maxValid = +input.value < +input.max;
+      minValid = +input.value >= +input.min;
+      maxValid = +input.value < +input.max;
       if (minValid && maxValid) input.value = +input.value + 1;
       if (+input.value === +input.max) {
         wrapper.querySelector('.notice').textContent = 'Max. value';
@@ -40,8 +36,8 @@ class EventFunctions {
       }
     };
     const stepperMinus = () => {
-      const minValid = +input.value > +input.min;
-      const maxValid = +input.value <= +input.max;
+      minValid = +input.value > +input.min;
+      maxValid = +input.value <= +input.max;
       if (minValid && maxValid) input.value = +input.value - 1;
       if (+input.value === +input.min) {
         wrapper.querySelector('.notice').textContent = 'Min. value';
