@@ -7,10 +7,6 @@ const elf = new ElementFunctions();
 const evf = new EventFunctions();
 const svg = new Svg();
 
-const sampleTest = () => {
-  console.log('sampleTest');
-};
-
 //-----------------------------------------------------------------------------------------------
 // WATER FORM INITIALIZATION
 // - If there is a '.waterForm' it will add eventlisteners and a simple validity checker.
@@ -92,24 +88,25 @@ if (waterForms) {
       // INPUT TYPE SELECT
       const inputTypeSelect = () => {
         const elParent = el.closest('form.waterForm');
+        const wrapper = el.closest('div');
         const srcSelected = el.querySelector('option[selected]');
         const srcOptions = elParent.querySelector('select').querySelectorAll('option');
         const srcSelectedText = srcSelected ? srcSelected.textContent : '–';
         const srcSelectedValue = srcSelected ? srcSelected.value : '–';
-        const wrapper = document.createElement('div');
+        const pseudoWrapper = document.createElement('div');
         const selected = document.createElement('div');
         const selectList = document.createElement('ul');
-        wrapper.className = 'pseudoSelectWrapper';
+        pseudoWrapper.className = 'pseudoSelectWrapper';
         selected.className = 'pseudoSelected';
         selectList.className = 'pseudoSelectList';
         // - Make pseudoSelected & Btn to open Input
-        elParent.insertBefore(selected, el);
+        wrapper.insertBefore(selected, el);
         selected.insertAdjacentHTML(
           'beforeend',
           `<p value="${srcSelectedValue}">${srcSelectedText}</p><span class="triangleDown">${svg.triangleDown}</span>`
         );
         // - Make pseudoSelectList & List Items
-        elParent.insertBefore(selectList, el);
+        wrapper.insertBefore(selectList, el);
         el.querySelectorAll('option').forEach((option) => {
           selectList.insertAdjacentHTML(
             'beforeend',
@@ -117,12 +114,12 @@ if (waterForms) {
           );
         });
         // - Make pseudoSelect Wrapper & place pseudoSelected & pseudoSelectList inside
-        elParent.insertBefore(wrapper, el);
-        wrapper.appendChild(selected);
-        wrapper.appendChild(selectList);
+        wrapper.insertBefore(pseudoWrapper, el);
+        pseudoWrapper.appendChild(selected);
+        pseudoWrapper.appendChild(selectList);
         // - Add eventListener to pseudoSelectWrapper & pseudoSelectList
-        wrapper.addEventListener('click', (e) => {
-          evf.handleClickSelectOne(e, wrapper);
+        pseudoWrapper.addEventListener('click', (e) => {
+          evf.handleClickSelectOne(e, pseudoWrapper);
         }, true);
         selectList.addEventListener('click', (e) => {
           evf.handleClickSelectList(e, srcOptions, selected);

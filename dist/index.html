@@ -10,16 +10,19 @@
 </head>
 <body>
 
-<div class="nothidden">
-<!-- BASIC FORM / START -------------------------------------------------------------------------->
+<!--
+CONTINUE HERE
+When they are hidden see if they work
+- On submit raise an alert. and show the parameters that are being passed
+-->
+
+<div class="unhidden">
+<!-- BASIC FORM / START -->
 <section class="sectContainer">
-  <!-- sectPallet 1/2 -->
   <div class="sectPallet">
     <h5>Basic Form</h5>
   </div>
-  <!-- sectPallet 2/2 -->
   <div class="sectPallet">
-    <!-- sectBox 1/2 -->
     <div class="sectBox">
       <h6>Default</h6>
       <form action="" method="POST">
@@ -51,13 +54,12 @@
             required></textarea> <!-- Closing tag here to avoid spaces -->
           <label for="messageDefault">Message</label>
         </div>
-        <button type="submit" ntouchstart="" disabled>Submit</button>
+        <button type="submit" ontouchstart="" disabled>Submit</button>
       </form>
     </div>
-    <!-- sectBox 2/2 -->
     <div class="sectBox">
       <h6>Water</h6>
-      <form class="waterForm fullWidth">
+      <form class="waterForm">
         <div>
           <input
             id="firstName"
@@ -94,15 +96,12 @@
 
 
 
-<!-- CHECKBOX / START ---------------------------------------------------------------------------->
+<!-- CHECKBOX / START -->
 <section class="sectContainer">
-  <!-- sectPallet 1/2 -->
   <div class="sectPallet">
     <h5>Checkbox</h5>
   </div>
-  <!-- sectPallet 2/2 -->
   <div class="sectPallet">
-    <!-- sectBox 1/2 -->
     <div class="sectBox">
       <h6>Default</h6>
       <form action="" method="POST">
@@ -138,9 +137,9 @@
             checked/>
           <label for="checkBoxDefault4">Checked &amp; Disabled</label>
         </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
-    <!-- sectBox 2/2 -->
     <div class="sectBox">
       <h6>Water</h6>
       <form class="waterForm" method="POST">
@@ -148,14 +147,14 @@
           <input
             id="checkBox1"
             type="checkbox"
-            name="checkBox1"/>
+            name="checkBox1--Default"/>
           <label for="checkBox1">Default</label>
         </div>
         <div>
           <input
             id="checkBox2"
             type="checkbox"
-            name="checkBox2"
+            name="checkBox2--Checked"
             checked/>
           <label for="checkBox2">Checked</label>
         </div>
@@ -163,7 +162,7 @@
           <input
             id="checkBox3"
             type="checkbox"
-            name="checkBox3"
+            name="checkBox3--Disabled"
             disabled>
           <label for="checkBox3">Disabled</label>
         </div>
@@ -171,11 +170,12 @@
           <input
             id="checkBox4"
             type="checkbox"
-            name="checkBox4"
+            name="checkBox4--CheckedDisabled"
             disabled
             checked>
           <label for="checkBox4">Checked &amp; Disabled</label>
         </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
   </div>
@@ -183,15 +183,12 @@
 
 
 
-<!-- RADIO BTN / START --------------------------------------------------------------------------->
+<!-- RADIO BTN / START -->
 <section class="sectContainer">
-  <!-- sectPallet 1/2 -->
   <div class="sectPallet">
     <h5>Radio Button</h5>
   </div>
-  <!-- sectPallet 2/2 -->
   <div class="sectPallet">
-    <!-- sectBox 1/2 -->
     <div class="sectBox">
       <h6>Default</h6>
       <form action="" method="POST">
@@ -199,21 +196,21 @@
           <input
             id="radioDefault1a"
             type="radio"
-            name="radioDefault"/>
+            name="radioDefault1a--Alpha"/>
           <label for="radioDefault1a">Alpha</label>
         </div>
         <div>
           <input
             id="radioDefault1b"
             type="radio"
-            name="radioDefault"/>
+            name="radioDefault1b--Beta"/>
           <label for="radioDefault1b">Beta</label>
         </div>
         <div>
           <input
             id="radioDefault1c"
             type="radio"
-            name="radioDefault"/>
+            name="radioDefault1c--Charlie"/>
           <label for="radioDefault1c">Charlie</label>
         </div>
         <hr>
@@ -221,7 +218,7 @@
           <input
             id="radioDefault3"
             type="radio"
-            name="radioDefault3"
+            name="radioDefault3--Disabled"
             disabled/>
           <label for="radioDefault3">Disabled</label>
         </div>
@@ -229,14 +226,14 @@
           <input
             id="radioDefault4"
             type="radio"
-            name="radioDefault4"
+            name="radioDefault4--CheckedDisabled"
             disabled
             checked/>
           <label for="radioDefault4">Checked &amp; Disabled</label>
         </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
-    <!-- sectBox 2/2 -->
     <div class="sectBox">
       <h6>Water</h6>
       <form class="waterForm" method="POST">
@@ -279,6 +276,7 @@
             checked/>
           <label for="radio3">Checked &amp; Disabled</label>
         </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
   </div>
@@ -286,42 +284,64 @@
 
 
 
-<!-- STEPPER / START ------------------------------------------------------------------------------>
+<!-- STEPPER / START -->
 <section class="sectContainer">
-  <!-- sectPallet 1/2 -->
   <div class="sectPallet">
     <h5>Number Stepper</h5>
   </div>
-  <!-- sectPallet 2/2 -->
   <div class="sectPallet">
-    <!-- sectBox 1/2 -->
     <div class="sectBox">
       <h6>Default</h6>
       <form action="" method="POST">
         <div>
           <label for="stepperDefault">How many penguins would you like?</label>
-          <input id="stepperDefault" name="stepper" type="number" value="0" min="0" max="10">
+          <input
+            id="stepperDefault"
+            name="stepper"
+            type="number"
+            value="0"
+            min="0" max="10"/>
         </div>
         <hr>
         <div>
           <label for="stepperDefault">How many penguins do you need?</label>
-          <input id="stepperDefault" name="stepper" type="number" value="0" min="0" max="10" required>
+          <input
+            id="stepperDefault"
+            name="stepper"
+            type="number"
+            value="0"
+            min="0" max="10"
+            required/>
         </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
-    <!-- sectBox 2/2 -->
     <div class="sectBox">
       <h6>Water</h6>
       <form class="waterForm" method="POST">
         <div class="vertical">
           <label for="stepper">How many penguins would you like?</label>
-          <input id="stepper" name="stepper" type="number" value="0" min="0" max="10">
+          <input
+            id="stepper"
+            name="stepper"
+            type="number"
+            value="0"
+            min="0"
+            max="10"/>
         </div>
         <hr>
         <div class="vertical">
           <label for="stepper">How many penguins do you need?</label>
-          <input id="stepper" name="stepper" type="number" value="0" min="0" max="10" required>
+          <input
+            id="stepper"
+            name="stepper"
+            type="number"
+            value="0"
+            min="0"
+            max="10"
+            required/>
         </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
   </div>
@@ -329,44 +349,48 @@
 </div>
 
 
-<!-- SELECT / START ------------------------------------------------------------------------------>
+<!-- SELECT / START -->
 <section class="sectContainer">
-  <!-- sectPallet 1/2 -->
   <div class="sectPallet">
     <h5>Select</h5>
   </div>
-  <!-- sectPallet 2/2 -->
   <div class="sectPallet">
-    <!-- sectBox 1/2 -->
     <div class="sectBox">
       <h6>Default</h6>
       <form action="" method="POST">
-        <select>
-          <option value="BR" selected="selected">Brasil</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option>
-          <option value="IN">India</option>
-          <option value="JP">Japan</option>
-          <option value="RS">Serbia</option>
-          <option value="UK">United Kingdom</option>
-          <option value="US">United States</option>
-        </select>
+        <div class="vertical">
+          <label for="selectDefault">Choose a country</label>
+          <select id="selectDefault">
+            <option value="BR" selected="selected">Brasil</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="IN">India</option>
+            <option value="JP">Japan</option>
+            <option value="RS">Serbia</option>
+            <option value="UK">United Kingdom</option>
+            <option value="US">United States</option>
+          </select>
+        </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
-    <!-- sectBox 2/2 -->
     <div class="sectBox">
       <h6>Water</h6>
       <form class="waterForm" action="" method="POST">
-        <select>
-          <option value="BR" selected="selected">Brasil</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option>
-          <option value="IN">India</option>
-          <option value="JP">Japan</option>
-          <option value="RS">Serbia</option>
-          <option value="UK">United Kingdom</option>
-          <option value="US">United States</option>
-        </select>
+        <div class="vertical">
+          <label for="select">Choose a country</label>
+          <select id="select">
+            <option value="BR" selected="selected">Brasil</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="IN">India</option>
+            <option value="JP">Japan</option>
+            <option value="RS">Serbia</option>
+            <option value="UK">United Kingdom</option>
+            <option value="US">United States</option>
+          </select>
+        </div>
+        <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
   </div>
@@ -374,9 +398,10 @@
 
 
 
-<!-- MULTI-SELECT / START ------------------------------------------------------------------------>
-<!-- SLIDER / START ------------------------------------------------------------------------>
-<!-- PASSWORD INPUT WITH VALIDATION / START ------------------------------------------------------------------------>
+<!-- MULTI-SELECT / START -->
+<!-- SLIDER / START -->
+<!-- PASSWORD INPUT WITH VALIDATION / START -->
+<!-- CALENDAR / START -->
 
 
 
