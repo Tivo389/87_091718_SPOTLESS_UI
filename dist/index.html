@@ -10,7 +10,13 @@
 </head>
 <body>
 
-<div class="nothidden">
+<!--
+CONTINUE HERE
+When they are hidden see if they work
+- On submit raise an alert. and show the parameters that are being passed
+-->
+
+<div class="unhidden">
 <!-- BASIC FORM / START -->
 <section class="sectContainer">
   <div class="sectPallet">
@@ -53,7 +59,7 @@
     </div>
     <div class="sectBox">
       <h6>Water</h6>
-      <form class="waterForm fullWidth">
+      <form class="waterForm">
         <div>
           <input
             id="firstName"
@@ -352,32 +358,38 @@
     <div class="sectBox">
       <h6>Default</h6>
       <form action="" method="POST">
-        <select>
-          <option value="BR" selected="selected">Brasil</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option>
-          <option value="IN">India</option>
-          <option value="JP">Japan</option>
-          <option value="RS">Serbia</option>
-          <option value="UK">United Kingdom</option>
-          <option value="US">United States</option>
-        </select>
+        <div class="vertical">
+          <label for="selectDefault">Choose a country</label>
+          <select id="selectDefault">
+            <option value="BR" selected="selected">Brasil</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="IN">India</option>
+            <option value="JP">Japan</option>
+            <option value="RS">Serbia</option>
+            <option value="UK">United Kingdom</option>
+            <option value="US">United States</option>
+          </select>
+        </div>
         <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
     <div class="sectBox">
       <h6>Water</h6>
       <form class="waterForm" action="" method="POST">
-        <select>
-          <option value="BR" selected="selected">Brasil</option>
-          <option value="FR">France</option>
-          <option value="DE">Germany</option>
-          <option value="IN">India</option>
-          <option value="JP">Japan</option>
-          <option value="RS">Serbia</option>
-          <option value="UK">United Kingdom</option>
-          <option value="US">United States</option>
-        </select>
+        <div class="vertical">
+          <label for="select">Choose a country</label>
+          <select id="select">
+            <option value="BR" selected="selected">Brasil</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="IN">India</option>
+            <option value="JP">Japan</option>
+            <option value="RS">Serbia</option>
+            <option value="UK">United Kingdom</option>
+            <option value="US">United States</option>
+          </select>
+        </div>
         <button type="submit" ontouchstart="">Submit</button>
       </form>
     </div>
@@ -389,6 +401,7 @@
 <!-- MULTI-SELECT / START -->
 <!-- SLIDER / START -->
 <!-- PASSWORD INPUT WITH VALIDATION / START -->
+<!-- CALENDAR / START -->
 
 
 

@@ -5,7 +5,7 @@ $inputHeight: calc(#{$fsP} + #{$padTopBtm} * 2);
 
 // - GENERAL STYLING
 .waterForm {
-  & > select:not([multiple]) {
+  & select:not([multiple]) {
     display: none;
   }
   & .pseudoSelectWrapper {
