@@ -55,7 +55,7 @@
   @include desktop {
     &:checked + label .checkboxCheckMark,
     &:checked + label .radioCheckMark {
-      transform: scale(1.333333);
+      transform: scale(1.5);
     }
   }
 }
