@@ -4,15 +4,15 @@
     border-radius: 500px;
   }
   @include desktop {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     & + label::before {
-      height: 22px;
-      width: 22px;
+      height: 24px;
+      width: 24px;
     }
     & + label .radioCheckMark {
-      left: 6px;
-      top: 5px;
+      left: 7px;
+      top: 7px;
     }
   }
 }
