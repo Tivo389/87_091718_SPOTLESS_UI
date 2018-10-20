@@ -22,10 +22,14 @@
     opacity: 0.25;
     cursor: not-allowed;
   }
+  &:not(:disabled) + label:hover {
+    transform: translateX(-3px);
+    padding-right: 3px;
+  }
   & + label {
-      align-items: center;
-      display: flex;
-      justify-content: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
     &::before {
       align-items: center;
       background-color: $colorWhite;

@@ -7,6 +7,9 @@
   text-transform: uppercase;
   transition-duration: $transitionS;
   line-height: 100%;
+  &:hover {
+    cursor: text;
+  }
 }
 
 %textInputStyle {
@@ -14,10 +17,16 @@
   border-radius: 0.2em;
   border: 1px solid $colorMain;
   letter-spacing: 0.02em;
+  background-color: $colorWhite;
   padding: 1.2em 1.8em 0.2em 0.6em;
   width: 100%;
+  transition-duration: $transitionS;
   &:focus {
     outline: none;
+  }
+  &:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
   & + label {
     @extend %textLabel;
