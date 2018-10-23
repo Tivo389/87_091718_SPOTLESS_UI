@@ -22,10 +22,6 @@
     opacity: 0.25;
     cursor: not-allowed;
   }
-  &:not(:disabled) + label:hover {
-    transform: translateX(-3px);
-    padding-right: 3px;
-  }
   & + label {
     align-items: center;
     display: flex;
@@ -57,6 +53,10 @@
     }
   }
   @include desktop {
+    &:not(:disabled) + label:hover {
+      transform: translateX(-3px);
+      padding-right: 3px;
+    }
     &:checked + label .checkboxCheckMark,
     &:checked + label .radioCheckMark {
       transform: scale(1.5);

@@ -85,8 +85,8 @@ if (waterForms) {
         elf.addRequirementSymbol(el);
       };
 
-      // INPUT TYPE SELECT
-      const inputTypeSelect = () => {
+      // INPUT TYPE SELECT ONE
+      const inputTypeSelectOne = () => {
         const elParent = el.closest('form.waterForm');
         const wrapper = el.closest('div');
         const srcSelected = el.querySelector('option[selected]');
@@ -126,6 +126,11 @@ if (waterForms) {
         }, true);
       };
 
+      // INPUT TYPE SELECT MULTIPLE
+      const inputTypeSelectMultiple = () => {
+        console.log('inputTypeSelectMultiple');
+      }
+
       // - SWITCH STATEMENT
       switch (el.type.toUpperCase()) {
         case 'TEXT':            inputTypeText();            break;
@@ -133,8 +138,7 @@ if (waterForms) {
         case 'CHECKBOX':        inputTypeCheckboxOrRadio(); break;
         case 'RADIO':           inputTypeCheckboxOrRadio(); break;
         case 'NUMBER':          inputTypeNumber();          break;
-        case 'SELECT-ONE':      inputTypeSelect();          break;
-        // case 'SELECT-MULTIPLE': inputTypeSelect();          break;
+        case 'SELECT-ONE':      inputTypeSelectOne();       break;
         default: console.error('addWater(): Switch Case Error');
       }
     };
